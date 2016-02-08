@@ -6,7 +6,7 @@ gulp.task('server', function () {
   browserSync({
     port: 9000,
     server: {
-      baseDir: 'app'
+      baseDir: './'
     }
   });
 });
@@ -14,9 +14,9 @@ gulp.task('server', function () {
 // слежка
 gulp.task('watch', function () {
   gulp.watch([
-    'app/*.html',
-    'app/js/**/*.js',
-    'app/css/**/*.css'
+    './*.html',
+    'javascripts/*.js',
+    'stylesheets/*.css'
   ]).on('change', browserSync.reload);
 });
 
