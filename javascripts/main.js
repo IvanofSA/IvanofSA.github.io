@@ -21,27 +21,9 @@ new Promise(function(resolve) {
     })
     .then(function() {
 
-      function allowDrop(e) {
-        e.preventDefault();
-      }
-
-      function drag(e) {
-        e.dataTransfer.setData("text", e.target.id);
-        // console.log(e.target.id);
-      }
-
-      function drop(e) {
-        e.preventDefault();
-        var data = e.dataTransfer.getData("text");
-        e.target.appendChild(document.getElementById(data));
-        // console.log(e.target.id);
-        console.log(document.getElementById(data));
-
-      }
-      
     return new Promise(function(resolve, reject) {
         VK.api('friends.get', {'fields':"photo"}, function(response) {
-          console.log(response);
+          // console.log(response);
             if (response.error) {
                 reject(new Error(response.error.error_msg));
             } else {
@@ -51,44 +33,48 @@ new Promise(function(resolve) {
 
                 friendAll.innerHTML = template;
 
-                resolve();
             }
+
+
+            function handleDragStart(e) {
+              e.dataTransfer.setData('text', e.target.id);
+
+            }
+            function handleDragOver(e) {
+              if (e.preventDefault) {
+                e.preventDefault();
+
+              }
+              // e.dataTransfer.dropEffect = 'move';
+              //
+              // return false;
+            }
+            function handleDrop(e) {
+              if (e.stopPropagation) {
+                e.stopPropagation();
+              }
+
+              e.preventDefault();
+              var data = e.dataTransfer.getData("text");
+              friendListGroup.appendChild(document.getElementById(data));
+
+            }
+
+
+            var cols = document.querySelectorAll('.list-group-item');
+
+            [].forEach.call(cols, function(col) {
+
+              col.addEventListener('dragstart', handleDragStart, false);
+
+            });
+
+            friendListGroup.addEventListener('drop', handleDrop, false);
+            friendListGroup.addEventListener('dragover', handleDragOver, false);
+
         });
+
     });
 }).catch(function(e) {
     alert('Ошибка: ' + e.message);
 });
-
-
-
-
-
-
-
-
-// .then(function(cityArr){
-// 	search__all.addEventListener('keyup', addList);
-//
-// 	function addList(e) {
-// 		console.log(this);
-// 		var townFilter = cityArr.filter(filterFn, this);
-// 		console.log(townFilter);
-// 		block.innerHTML = '';
-//
-// 		for (var i = 0; i < townFilter.length; i++) {
-// 			var newLi = document.createElement('li');
-// 			newLi.innerHTML = townFilter[i];
-// 			block.appendChild(newLi);
-// 		}
-// 	}
-//
-// 	function filterFn(el, ind, ar, thisArg) {
-// 		var inpValue  = this.value;
-// 		console.log(this.value);
-// 		if (inpValue === '') {
-// 			return false;
-// 		}
-// 		return el.indexOf(inpValue) !== -1;
-// 	}
-//
-// })
