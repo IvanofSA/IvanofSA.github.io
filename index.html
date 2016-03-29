@@ -33,12 +33,12 @@
      </div>
      <div class="row">
        <div class="col-lg-8 col-lg-offset-2">
-         <div class="friend__wrap clearfix">
+         <div class="friend__wrap clearfix"  id="friendWrap">
            <div class="friend friend__all-block" id="friendAll">
 
            </div>
            <div class="friend friend__group-block" id="friendgroup" >
-             <ul class="list-group" id="friendListGroup"></ul>
+             <ul class="list-group" id="friendSave"></ul>
            </div>
          </div>
        </div>
@@ -53,12 +53,12 @@
  <script type="text/x-handlebars-template" id="playerItemTemplate">
      <ul class="list-group" id="friendList">
          {{#each list}}
-         <li class="list-group-item" id="friendListAll" draggable="true" data-id="{{uid}}">
+         <li class="list-group-item friendItem" draggable="true" data-id="{{uid}}">
              <div class="row">
                  <div class="col-xs-12">
                      <img class="avatar" data-role="avatar__friend" src="{{photo}}"></img>
                      <span class="title">{{first_name}} {{last_name}}</span>
-                 <span class="glyphicon glyphicon-plus"></span>
+                 <span class="glyphicon glyphicon-plus" data-role="plus"></span>
                </div>
 
              </div>

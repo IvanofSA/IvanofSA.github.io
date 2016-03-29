@@ -52,8 +52,25 @@ body{
 	height: 50px;
 	border-radius: 50%;
 }
-#friendListGroup{
+#friendSave{
 	width: 100%;
 	height: 100%;
 	padding-bottom: 100px;
+}
+.glyphicon-plus{
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+.glyphicon-minus{
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+.friendItem{
+	position: relative;
 }
