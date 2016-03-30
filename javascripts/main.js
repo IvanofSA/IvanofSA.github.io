@@ -24,6 +24,7 @@ new Promise(function(resolve) {
     return new Promise(function(resolve, reject) {
         VK.api('friends.get', {'fields':"photo"}, function(response) {
           // console.log(response);
+
             if (response.error) {
                 reject(new Error(response.error.error_msg));
             } else {
@@ -32,10 +33,14 @@ new Promise(function(resolve) {
                     template = templateFn({list: response.response});
 
                 friendAll.innerHTML = template;
+                // console.log(response.response);
             }
 
             function handleDragStart(e) {
               e.target.closest("li").setAttribute("id","transferElem");
+              console.log(e.target.closest("li"));
+
+              e.dataTransfer.effectAllowed = "move";
               e.dataTransfer.setData('text', e.target.closest("li").id);
             };
             function handleDragOver(e) {
@@ -46,7 +51,6 @@ new Promise(function(resolve) {
             function handleDragEnd(e) {
               e.target.closest("li").removeAttribute("id");
               var changePlus = e.target.querySelector('[data-role=plus]');
-              console.log(e.target.querySelectorAll('.avatar'));
 
               if (changePlus.getAttribute('data-role') === 'plus') {
                 changePlus.setAttribute('data-role', 'minus');
@@ -63,6 +67,7 @@ new Promise(function(resolve) {
 
               e.preventDefault();
               var data = e.dataTransfer.getData("text");
+              console.log(data);
               friendSave.appendChild(document.getElementById(data));
             };
 
@@ -80,8 +85,7 @@ new Promise(function(resolve) {
 
             function transferFriend(e) {
               var elemRemove = e.target.closest("li");
-              var el = friendList.querySelector('.friend');
-                console.log(el);
+
                 if (e.target.getAttribute('data-role') === 'plus') {
                   elemRemove.setAttribute('draggable', 'false');
                   e.target.setAttribute('data-role', 'minus');
@@ -93,9 +97,32 @@ new Promise(function(resolve) {
                     e.target.setAttribute('data-role', 'plus');
                     e.target.className = 'glyphicon glyphicon-plus';
                     friendList.appendChild(elemRemove);
-                  }
-
+                }
             }
+
+            searchAll.addEventListener('input', addList);
+            var arrNew = response.response;
+
+            	function addList(e) {
+                var newArrObj = arrNew.filter(filterFn, this);
+
+                var source = playerItemTemplate.innerHTML,
+                    templateFn = Handlebars.compile(source),
+                    template = templateFn({list: newArrObj});
+
+                friendAll.innerHTML = template;
+            	}
+            	function filterFn(el, ind, ar, thisArg) {
+            		var inpValue  = this.value;
+            		// console.log(el);
+
+                if (inpValue) {
+                     return ((el.first_name.toLowerCase()+" "+el.last_name.toLowerCase()).indexOf(inpValue.trim().toLowerCase()) !== -1);
+                 } else {
+                     return arrNew;
+                 }
+            	}
+
         });
 
     });
