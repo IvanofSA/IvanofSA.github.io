@@ -56,14 +56,16 @@
          <li class="list-group-item friendItem" draggable="true" data-id="{{uid}}">
              <div class="row">
                  <div class="col-xs-12">
+
                      <img class="avatar" draggable = "false" data-role="avatar__friend" src="{{photo}}"></img>
                      <span class="title">{{first_name}} {{last_name}}</span>
-                 <span class="glyphicon glyphicon-plus" data-role="plus"></span>
-               </div>
+                     <span class="glyphicon glyphicon-minus glyphicon-plus " data-role="plus"></span>
+                 </div>
 
              </div>
          </li>
          {{/each}}
+
      </ul>
  </script>
  </body>

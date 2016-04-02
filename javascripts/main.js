@@ -73,9 +73,9 @@ new Promise(function(resolve) {
 
             var cols = document.querySelectorAll('.friendItem');
 
-            [].forEach.call(cols, function(col) {
-              col.addEventListener('dragstart', handleDragStart, false);
-            });
+            // [].forEach.call(cols, function(col) {
+              friendAll.addEventListener('dragstart', handleDragStart, false);
+            // });
 
             friendSave.addEventListener('drop', handleDrop, false);
             friendSave.addEventListener('dragover', handleDragOver, false);
