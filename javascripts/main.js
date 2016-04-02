@@ -71,11 +71,9 @@ new Promise(function(resolve) {
               friendSave.appendChild(document.getElementById(data));
             };
 
-            var cols = document.querySelectorAll('.friendItem');
+            // var cols = document.querySelectorAll('.friendItem');
 
-            // [].forEach.call(cols, function(col) {
               friendAll.addEventListener('dragstart', handleDragStart, false);
-            // });
 
             friendSave.addEventListener('drop', handleDrop, false);
             friendSave.addEventListener('dragover', handleDragOver, false);
