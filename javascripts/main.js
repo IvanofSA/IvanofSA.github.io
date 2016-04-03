@@ -38,24 +38,24 @@ new Promise(function(resolve) {
 
             function handleDragStart(e) {
               e.target.closest("li").setAttribute("id","transferElem");
-              console.log(e.target.closest("li"));
-
               e.dataTransfer.effectAllowed = "move";
               e.dataTransfer.setData('text', e.target.closest("li").id);
             };
+
             function handleDragOver(e) {
               if (e.preventDefault) {
-                e.preventDefault();
+              e.preventDefault();
               }
             };
+
             function handleDragEnd(e) {
               e.target.closest("li").removeAttribute("id");
               var changePlus = e.target.querySelector('[data-role=plus]');
 
               if (changePlus.getAttribute('data-role') === 'plus') {
-                changePlus.setAttribute('data-role', 'minus');
-                e.target.closest("li").setAttribute('draggable', 'false');
-                changePlus.className = 'glyphicon glyphicon-minus';
+              changePlus.setAttribute('data-role', 'minus');
+              e.target.closest("li").setAttribute('draggable', 'false');
+
               }
 
             };
@@ -67,59 +67,112 @@ new Promise(function(resolve) {
 
               e.preventDefault();
               var data = e.dataTransfer.getData("text");
-              console.log(data);
+              // console.log(data);
+
               friendSave.appendChild(document.getElementById(data));
             };
 
-            // var cols = document.querySelectorAll('.friendItem');
-
-              friendAll.addEventListener('dragstart', handleDragStart, false);
+            friendAll.addEventListener('dragstart', handleDragStart, false);
 
             friendSave.addEventListener('drop', handleDrop, false);
             friendSave.addEventListener('dragover', handleDragOver, false);
             friendSave.addEventListener('dragend', handleDragEnd, false);
             friendWrap.addEventListener('click', transferFriend, false);
 
-
             function transferFriend(e) {
               var elemRemove = e.target.closest("li");
-
+              var firstChild = friendList.firstChild.nextElementSibling;
+              // console.log(firstChild);
                 if (e.target.getAttribute('data-role') === 'plus') {
                   elemRemove.setAttribute('draggable', 'false');
                   e.target.setAttribute('data-role', 'minus');
-                  e.target.className = 'glyphicon glyphicon-minus';
                   friendSave.appendChild(elemRemove);
 
                 } else if(e.target.getAttribute('data-role') === 'minus') {
                     elemRemove.setAttribute('draggable', 'true');
                     e.target.setAttribute('data-role', 'plus');
-                    e.target.className = 'glyphicon glyphicon-plus';
-                    friendList.appendChild(elemRemove);
+                    friendList.insertBefore(elemRemove, firstChild);
                 }
             }
 
             searchAll.addEventListener('input', addList);
-            var arrNew = response.response;
+            searchSave.addEventListener('input', addListSave);
 
             	function addList(e) {
-                var newArrObj = arrNew.filter(filterFn, this);
 
-                var source = playerItemTemplate.innerHTML,
-                    templateFn = Handlebars.compile(source),
-                    template = templateFn({list: newArrObj});
+                var friendAllLi = friendList.querySelectorAll('.friendItem');
 
-                friendAll.innerHTML = template;
-            	}
-            	function filterFn(el, ind, ar, thisArg) {
-            		var inpValue  = this.value;
-            		// console.log(el);
+                var friendArrObj = [];
 
-                if (inpValue) {
-                     return ((el.first_name.toLowerCase()+" "+el.last_name.toLowerCase()).indexOf(inpValue.trim().toLowerCase()) !== -1);
-                 } else {
-                     return arrNew;
-                 }
-            	}
+                for (var i = 0; i < friendAllLi.length; i++) {
+                  // console.log(arrAll[i]);
+
+                  var newObj = {};
+                  newObj.id = friendAllLi[i].getAttribute("data-id");
+                  newObj.name = friendAllLi[i].innerText;
+                  newObj.list = friendAllLi[i];
+                  friendArrObj.push(newObj);
+                }
+                // console.log(itemArr);
+                var friendfilterArr = friendArrObj.filter(filterFn, this);
+
+                friendFilterAll(friendAllLi, friendfilterArr);
+              }
+
+              function addListSave(e) {
+
+                var friendAllLi = friendSave.querySelectorAll('.friendItem');
+                var friendArrObj = [];
+
+                for (var i = 0; i < friendAllLi.length; i++) {
+                  var newObj = {};
+                  newObj.id = friendAllLi[i].getAttribute("data-id");
+                  newObj.name = friendAllLi[i].innerText;
+                  newObj.list = friendAllLi[i];
+                  friendArrObj.push(newObj);
+                }
+                var friendfilterArr = friendArrObj.filter(filterFn, this);
+                friendFilterAll(friendAllLi, friendfilterArr);
+              }
+
+              function friendFilterAll(arrAll, newArrAll) {
+                // console.log(arrAll);
+                // console.log(newArrAll);
+                for (var k= 0; k < arrAll.length; k++) {
+                  arrAll[k].classList.remove('hide');
+                }
+                for (var j = 0; j < newArrAll.length; j++) {
+                  newArrAll[j].list.classList.add('hide');
+                }
+              }
+
+
+              function filterFn(el, ind, ar, thisArg) {
+              	var inpValue  = this.value;
+              	// console.log(this.value);
+              	if (inpValue === '') {
+              		return false;
+              	}
+              	return (el.name.toLowerCase().indexOf(inpValue.trim().toLowerCase()) === -1)
+              }
+
+            saveButton.addEventListener('click', saveLocalS);
+            removeButton.addEventListener('click', removeLocalS);
+
+              function removeLocalS() {
+                localStorage.removeItem('list');
+                friendSave.innerHTML = '';
+              }
+
+              function saveLocalS() {
+
+                var friendHtml = friendSave.innerHTML;
+                localStorage.setItem('list', friendHtml)
+                // console.log(localStorage.getItem('list'));
+                // console.log(friendHtml);
+              }
+              // console.log(localStorage.getItem('list'));
+              friendSave.innerHTML = localStorage.getItem('list');
 
         });
 
