@@ -31,15 +31,16 @@ new Promise(function(resolve) {
                 var source = playerItemTemplate.innerHTML,
                     templateFn = Handlebars.compile(source),
                     template = templateFn({list: response.response});
-
+                    // console.log(response.response);
                 friendAll.innerHTML = template;
                 // console.log(response.response);
             }
 
             function handleDragStart(e) {
-              e.target.closest("li").setAttribute("id","transferElem");
+              var id = "transferElem";
+              e.target.closest("li").setAttribute("id", id);
               e.dataTransfer.effectAllowed = "move";
-              e.dataTransfer.setData('text', e.target.closest("li").id);
+              e.dataTransfer.setData('text', id);
             };
 
             function handleDragOver(e) {
@@ -66,23 +67,24 @@ new Promise(function(resolve) {
               }
 
               e.preventDefault();
-              var data = e.dataTransfer.getData("text");
-              // console.log(data);
+              var dataId = e.dataTransfer.getData("text");
 
-              friendSave.appendChild(document.getElementById(data));
+              friendSave.appendChild(document.getElementById(dataId));
             };
 
-            friendAll.addEventListener('dragstart', handleDragStart, false);
+            friendAll.addEventListener('dragstart', handleDragStart);
 
-            friendSave.addEventListener('drop', handleDrop, false);
-            friendSave.addEventListener('dragover', handleDragOver, false);
-            friendSave.addEventListener('dragend', handleDragEnd, false);
-            friendWrap.addEventListener('click', transferFriend, false);
+            friendSave.addEventListener('drop', handleDrop);
+            friendSave.addEventListener('dragover', handleDragOver);
+            friendSave.addEventListener('dragend', handleDragEnd);
+            friendWrap.addEventListener('click', transferFriend);
 
             function transferFriend(e) {
               var elemRemove = e.target.closest("li");
               var firstChild = friendList.firstChild.nextElementSibling;
-              // console.log(firstChild);
+              var btn = friendList.querySelector('.glyphicon');
+              // console.log( e.target.classList.contains("glyphicon"));
+              if ( e.target.classList.contains("glyphicon")) {
                 if (e.target.getAttribute('data-role') === 'plus') {
                   elemRemove.setAttribute('draggable', 'false');
                   e.target.setAttribute('data-role', 'minus');
@@ -93,6 +95,7 @@ new Promise(function(resolve) {
                     e.target.setAttribute('data-role', 'plus');
                     friendList.insertBefore(elemRemove, firstChild);
                 }
+              }
             }
 
             searchAll.addEventListener('input', addList);
@@ -101,55 +104,43 @@ new Promise(function(resolve) {
             	function addList(e) {
 
                 var friendAllLi = friendList.querySelectorAll('.friendItem');
-
-                var friendArrObj = [];
-
-                for (var i = 0; i < friendAllLi.length; i++) {
-                  // console.log(arrAll[i]);
-
-                  var newObj = {};
-                  newObj.id = friendAllLi[i].getAttribute("data-id");
-                  newObj.name = friendAllLi[i].innerText;
-                  newObj.list = friendAllLi[i];
-                  friendArrObj.push(newObj);
-                }
-                // console.log(itemArr);
-                var friendfilterArr = friendArrObj.filter(filterFn, this);
-
-                friendFilterAll(friendAllLi, friendfilterArr);
+                console.log(this);
+                friendFilterAll.call(this, friendAllLi);
               }
 
               function addListSave(e) {
 
                 var friendAllLi = friendSave.querySelectorAll('.friendItem');
-                var friendArrObj = [];
-
-                for (var i = 0; i < friendAllLi.length; i++) {
-                  var newObj = {};
-                  newObj.id = friendAllLi[i].getAttribute("data-id");
-                  newObj.name = friendAllLi[i].innerText;
-                  newObj.list = friendAllLi[i];
-                  friendArrObj.push(newObj);
-                }
-                var friendfilterArr = friendArrObj.filter(filterFn, this);
-                friendFilterAll(friendAllLi, friendfilterArr);
+                console.log(this);
+                friendFilterAll.call(this, friendAllLi);
               }
 
-              function friendFilterAll(arrAll, newArrAll) {
-                // console.log(arrAll);
-                // console.log(newArrAll);
-                for (var k= 0; k < arrAll.length; k++) {
-                  arrAll[k].classList.remove('hide');
+              function friendFilterAll(friendAllLi) {
+                console.log(this);
+                var friendArrObj = [].map.call(friendAllLi, function(el) {
+
+                    var newObj = {};
+                    newObj.id = el.getAttribute("data-id");
+                    newObj.name = el.innerText;
+                    newObj.list = el;
+
+                    return newObj;
+                  });
+
+                var friendfilterArr = friendArrObj.filter(filterFn, this);
+                // console.log(friendArrObj);
+                for (var k= 0; k < friendAllLi.length; k++) {
+                  friendAllLi[k].classList.remove('hide');
                 }
-                for (var j = 0; j < newArrAll.length; j++) {
-                  newArrAll[j].list.classList.add('hide');
+                for (var j = 0; j < friendfilterArr.length; j++) {
+                  friendfilterArr[j].list.classList.add('hide');
                 }
               }
 
 
               function filterFn(el, ind, ar, thisArg) {
               	var inpValue  = this.value;
-              	// console.log(this.value);
+                console.log(this.value);
               	if (inpValue === '') {
               		return false;
               	}
@@ -165,14 +156,35 @@ new Promise(function(resolve) {
               }
 
               function saveLocalS() {
+                var saveList = friendSave.querySelectorAll('.friendItem');
+                // console.log(saveList);
+                var friendArrObj = [].map.call(saveList, function(el) {
+                var minus = friendSave.querySelector('.glyphicon');
+                var photo = el.querySelector('.avatar');
+                var name = el.innerText.split(' ');
+                // console.log(name);
+                    var newObj = {};
+                    newObj.uid = el.getAttribute("data-id");
+                    newObj.photo = photo.getAttribute('src');
+                    newObj.minus = minus.getAttribute('data-role');
+                    newObj.first_name = name[1];
+                    newObj.last_name = name[2];
+                    console.log(newObj);
+                    return newObj;
+                  });
 
-                var friendHtml = friendSave.innerHTML;
+                var friendHtml = JSON.stringify(friendArrObj);
+
                 localStorage.setItem('list', friendHtml)
-                // console.log(localStorage.getItem('list'));
-                // console.log(friendHtml);
               }
-              // console.log(localStorage.getItem('list'));
-              friendSave.innerHTML = localStorage.getItem('list');
+
+              var JSonParse = JSON.parse(localStorage.getItem('list'));
+
+              var source = playerItemTemplate2.innerHTML,
+                  templateFn = Handlebars.compile(source),
+                  template = templateFn({list: JSonParse});
+                  // console.log(response.response);
+              friendSave.innerHTML = template;
 
         });
 

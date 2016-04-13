@@ -4,7 +4,7 @@ var gulp = require("gulp"),
 // Запуск сервера
 gulp.task('server', function () {
   browserSync({
-    port: 9000,
+    port: 7000,
     server: {
       baseDir: './'
     }

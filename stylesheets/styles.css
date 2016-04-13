@@ -23,7 +23,7 @@ body{
 .form-control{
 	border-radius: 30px;
 	margin: 10px 0 10px 10px;
-	width: 48%;
+	width: 46%;
 }
 .left{
 	float: left;
@@ -37,7 +37,7 @@ body{
 }
 .friend{
 	margin: 10px 0 10px 10px;
-	width: 48%;
+	width: 46%;
 }
 .friend__all-block{
 	float: left;
