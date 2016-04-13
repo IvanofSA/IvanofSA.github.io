@@ -82,9 +82,10 @@ new Promise(function(resolve) {
             function transferFriend(e) {
               var elemRemove = e.target.closest("li");
               var firstChild = friendList.firstChild.nextElementSibling;
-              var btn = friendList.querySelector('.glyphicon');
+              // var btn = friendList.querySelector('.glyphicon');
               // console.log( e.target.classList.contains("glyphicon"));
               if ( e.target.classList.contains("glyphicon")) {
+
                 if (e.target.getAttribute('data-role') === 'plus') {
                   elemRemove.setAttribute('draggable', 'false');
                   e.target.setAttribute('data-role', 'minus');
@@ -102,30 +103,25 @@ new Promise(function(resolve) {
             searchSave.addEventListener('input', addListSave);
 
             	function addList(e) {
-
                 var friendAllLi = friendList.querySelectorAll('.friendItem');
-                console.log(this);
                 friendFilterAll.call(this, friendAllLi);
               }
 
               function addListSave(e) {
-
                 var friendAllLi = friendSave.querySelectorAll('.friendItem');
-                console.log(this);
                 friendFilterAll.call(this, friendAllLi);
               }
 
               function friendFilterAll(friendAllLi) {
-                console.log(this);
+
                 var friendArrObj = [].map.call(friendAllLi, function(el) {
 
                     var newObj = {};
                     newObj.id = el.getAttribute("data-id");
                     newObj.name = el.innerText;
                     newObj.list = el;
-
                     return newObj;
-                  });
+                });
 
                 var friendfilterArr = friendArrObj.filter(filterFn, this);
                 // console.log(friendArrObj);
@@ -163,14 +159,14 @@ new Promise(function(resolve) {
                 var photo = el.querySelector('.avatar');
                 var name = el.innerText.split(' ');
                 // console.log(name);
-                    var newObj = {};
-                    newObj.uid = el.getAttribute("data-id");
-                    newObj.photo = photo.getAttribute('src');
-                    newObj.minus = minus.getAttribute('data-role');
-                    newObj.first_name = name[1];
-                    newObj.last_name = name[2];
-                    console.log(newObj);
-                    return newObj;
+                    var newObjLs = {};
+                    newObjLs.uid = el.getAttribute("data-id");
+                    newObjLs.photo = photo.getAttribute('src');
+                    newObjLs.minus = minus.getAttribute('data-role');
+                    newObjLs.first_name = name[1];
+                    newObjLs.last_name = name[2];
+                    // console.log(newObj);
+                    return newObjLs;
                   });
 
                 var friendHtml = JSON.stringify(friendArrObj);
@@ -178,11 +174,11 @@ new Promise(function(resolve) {
                 localStorage.setItem('list', friendHtml)
               }
 
-              var JSonParse = JSON.parse(localStorage.getItem('list'));
+              var resultLs = JSON.parse(localStorage.getItem('list'));
 
               var source = playerItemTemplate2.innerHTML,
                   templateFn = Handlebars.compile(source),
-                  template = templateFn({list: JSonParse});
+                  template = templateFn({list: resultLs});
                   // console.log(response.response);
               friendSave.innerHTML = template;
 
