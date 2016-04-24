@@ -112,8 +112,10 @@
                 coordsLink.push(data[value].coords.y);
 
                 headerName.innerHTML = address;
-
-                createElement(name, place, naweDate, text);
+                newLi.classList.add('review__item');
+                newLi.innerHTML = '<b>'+ name +'</b> <span>'+ place +'</span> <span>'+
+                naweDate +'</span> <p>'+ text +'</p>';
+                listReview.appendChild(newLi);
 
                 clickCoords = {pos:coordsLink, address:address};
 
@@ -157,12 +159,12 @@
         popup.classList.add('hide');
       }
 
-      function createElement(nameValue, placeValue, naweDate, reviewValue){
-        newLi.classList.add('review__item');
-        newLi.innerHTML = '<b>'+ nameValue +'</b> <span>'+ placeValue +'</span> <span>'+
-        naweDate +'</span> <p>'+ reviewValue +'</p>';
-        listReview.appendChild(newLi);
-      }
+      // function createElement(nameValue, placeValue, naweDate, reviewValue){
+      //   newLi.classList.add('review__item');
+      //   newLi.innerHTML = '<b>'+ nameValue +'</b> <span>'+ placeValue +'</span> <span>'+
+      //   naweDate +'</span> <p>'+ reviewValue +'</p>';
+      //   listReview.appendChild(newLi);
+      // }
 
       function createMark (mark) {
       	var myPlacemark = new ymaps.Placemark([mark.coords.x,mark.coords.y], { // create new mark
@@ -231,7 +233,10 @@
             req.open('POST', 'http://smelukov.com:3000');
             req.send(JSON.stringify(data));
             req.onload = function() {
-              createElement(nameValue, placeValue, naweDate, reviewValue);
+              newLi.classList.add('review__item');
+              newLi.innerHTML = '<b>'+ nameValue +'</b> <span>'+ placeValue +'</span> <span>'+
+              naweDate +'</span> <p>'+ reviewValue +'</p>';
+              listReview.appendChild(newLi);
               createMark(newMark);
               myMap.geoObjects.remove(soloPlacemark);
             };
