@@ -36,12 +36,11 @@
 
     }).then(function(data) {
       return new Promise(function(resolve) {
-        var markaKeys = Object.keys(data);
+        var markaKeys = Object.keys(data),
             popup = document.querySelector('.popup'),
             close = document.querySelector('.close'),
             form = document.querySelector('.form'),
             listReview = document.querySelector('.review__list'),
-            newLi = document.createElement('li'),
             headerName = document.querySelector('.adress__name'),
 
             customItemContentLayout = ymaps.templateLayoutFactory.createClass(
@@ -110,13 +109,9 @@
 
                 coordsLink.push(data[value].coords.x);
                 coordsLink.push(data[value].coords.y);
-
                 headerName.innerHTML = address;
-                newLi.classList.add('review__item');
-                newLi.innerHTML = '<b>'+ name +'</b> <span>'+ place +'</span> <span>'+
-                naweDate +'</span> <p>'+ text +'</p>';
-                listReview.appendChild(newLi);
 
+                createElement(name, place, naweDate, text);
                 clickCoords = {pos:coordsLink, address:address};
 
               });
@@ -159,12 +154,13 @@
         popup.classList.add('hide');
       }
 
-      // function createElement(nameValue, placeValue, naweDate, reviewValue){
-      //   newLi.classList.add('review__item');
-      //   newLi.innerHTML = '<b>'+ nameValue +'</b> <span>'+ placeValue +'</span> <span>'+
-      //   naweDate +'</span> <p>'+ reviewValue +'</p>';
-      //   listReview.appendChild(newLi);
-      // }
+      function createElement(nameValue, placeValue, naweDate, reviewValue) {
+        var newLi = document.createElement('li');
+        newLi.classList.add('review__item');
+        newLi.innerHTML = '<b>'+ nameValue +'</b> <span>'+ placeValue +'</span> <span>'+
+        naweDate +'</span> <p>'+ reviewValue +'</p>';
+        listReview.appendChild(newLi);
+      }
 
       function createMark (mark) {
       	var myPlacemark = new ymaps.Placemark([mark.coords.x,mark.coords.y], { // create new mark
@@ -233,10 +229,7 @@
             req.open('POST', 'http://smelukov.com:3000');
             req.send(JSON.stringify(data));
             req.onload = function() {
-              newLi.classList.add('review__item');
-              newLi.innerHTML = '<b>'+ nameValue +'</b> <span>'+ placeValue +'</span> <span>'+
-              naweDate +'</span> <p>'+ reviewValue +'</p>';
-              listReview.appendChild(newLi);
+              createElement(nameValue, placeValue, naweDate, reviewValue);
               createMark(newMark);
               myMap.geoObjects.remove(soloPlacemark);
             };
