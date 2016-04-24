@@ -15,8 +15,8 @@ gulp.task('server', function () {
 gulp.task('watch', function () {
   gulp.watch([
     './*.html',
-    'javascripts/*.js',
-    'stylesheets/*.css'
+    'js/*.js',
+    'css/*.css'
   ]).on('change', browserSync.reload);
 });
 

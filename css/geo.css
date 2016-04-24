@@ -1,0 +1,152 @@
+html, body, #map {
+  position: relative;
+  width: 100%;
+	height: 100%;
+}
+.popup{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 380px;
+  background: #fff;
+  z-index: 2;
+  border-radius: 5px;
+}
+.header{
+  position: relative;
+  padding: 10px 20px 10px 10px;
+  background: #ff8663;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+}
+.adress__name{
+  font-family: Arial;
+  font-size: 11px;
+}
+.close{
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.close:hover{
+  color: #228322;
+}
+.review__list{
+  padding: 20px 15px;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.review__list span{
+  color: #999;
+  margin-left: 10px;
+}
+
+.review__list span:first-child{
+  font-weight: bold;
+  color: #000;
+  margin-left: 0;
+}
+.review__item{
+  margin-bottom: 25px;
+  list-style: none;
+  border-bottom: 1px solid #ccc;
+}
+
+.form{
+  padding: 0 20px 15px 15px;
+}
+.h2{
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff8663;
+}
+input{
+  display: block;
+}
+.inp{
+  width: 100%;
+  padding: 5px 0 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  outline: none;
+}
+.inp__review{
+  resize: none;
+  min-height: 100px;
+}
+.btn{
+  background: #ff8663;
+  border-radius: 10px;
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  margin-left: auto;
+}
+.hide{
+  display: none;
+}
+.ballon_body {
+  margin-bottom: 10px;
+}
+.ballon_content {
+  margin-bottom: 10px;
+}
+.ballon_footer {
+  font-size: 11px;
+  color: #ccc;
+}
+
+  /*ribbon*/
+.ribbon {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 1;
+  overflow: hidden;
+  width: 130px;
+  height: 130px;
+  text-align: right;
+}
+.ribbon a {
+  font-size: 11px;
+  font-weight: bold;
+  color: #FFF;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 15px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(43deg);
+  width: 185px;
+  display: block;
+  background: #79A70A;
+  background: linear-gradient(#F79E05 0%, #8F5408 100%);
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 45px;
+  right: -38px;
+}
+.ribbon a::before {
+  content: "";
+  position: absolute; left: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid #8F5408;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F5408;
+}
+.ribbon a::after {
+  content: "";
+  position: absolute; right: 0px; top: 100%;
+  z-index: -1;
+  border-left: 3px solid transparent;
+  border-right: 3px solid #8F5408;
+  border-bottom: 3px solid transparent;
+  border-top: 3px solid #8F5408;
+}
+.red{
+  background: #ff9933;
+}
