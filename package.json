@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "gulpfile.js",
   "scripts": {
-  "start": "node js/server.js & gulp"
+  "start": "node js/server.js && gulp"
   },
   "devDependencies": {
     "browser-sync": "^2.9.7",

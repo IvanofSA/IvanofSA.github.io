@@ -1,3 +1,6 @@
+* {
+	box-sizing: border-box;
+}
 body{
 	background: #49c0f0;
 	background: -moz-linear-gradient(top, #49c0f0 3%, #2393b2 76%);
@@ -27,7 +30,7 @@ body{
 .form-control{
 	border-radius: 30px;
 	margin: 10px 0 10px 10px;
-	width: 46%;
+	width: 44%;
 }
 .left{
 	float: left;
@@ -41,7 +44,7 @@ body{
 }
 .friend{
 	margin: 10px 0 10px 10px;
-	width: 46%;
+	width: 44%;
 }
 .friend__all-block{
 	float: left;

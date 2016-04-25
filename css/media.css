@@ -1,0 +1,115 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px){
+
+}
+	/**/
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px){
+  .popup{
+    top: 15%;
+    right: 3%;
+  }
+  #map{
+    min-height: calc(100vh + 20vh);
+  }
+}
+	/**/
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px){
+  .header{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #map{
+    min-height: calc(100vh + 30vh);
+  }
+  .popup{
+    top: 30%;
+    width: 230px;
+  }
+  .header{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #map{
+    min-height: calc(100vh + 40vh);
+  }
+  .inp{
+    padding: 0 0 0 10px;
+  }
+}
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px){
+  .popup{
+    top: 40%;
+    width: 210px;
+  }
+  .header{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #map{
+    min-height: calc(100vh + 40vh);
+  }
+  .inp{
+    padding: 0 0 0 10px;
+  }
+}
+	/**/
+
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px){
+  .popup{
+    top: 60%;
+    width: 180px;
+  }
+  .header{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #map{
+    min-height: calc(100vh + 50vh);
+  }
+  .inp{
+    padding: 0 0 0 10px;
+  }
+}
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px){
+
+}
+	/**/
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px){
+
+}
+	/**/
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px){
+
+}
+	/**/
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px){
+
+}
+	/**/
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px){}
+	/**/
