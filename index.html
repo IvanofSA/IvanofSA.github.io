@@ -1,22 +1,338 @@
-<!DOCTYPE HTML>
-<html>
- <head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-   <meta name="description" content="">
-   <meta name="keywords" content="">
-   <meta name="author" content="IvanovSA">
-   <link rel="shortcut icon" href="favicon/favicon.ico" type="icon/x-icon">
-   <link rel="icon" href="/favicon.ico" type="icon/x-icon">
-   <title>IvanovSA</title>
-   <link rel="stylesheet" href="css/normalize.css">
-   <link rel="stylesheet" href="css/main.css">
-   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
- </head>
- <body>
-  <div class="wrapper">
-    <a href="geo.html" class="button"/>Гео-отзыв</a>
-    <a href="friend.html" class="button"/>Другофильтер</a>
-  </div>
- </body>
+<!DOCTYPE html>
+<html lang="ru-RU">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE = edge">
+		<meta name="viewport" content="width=device-width">
+		<meta name="keywords" content="">
+		<meta name="author" content="Иванов Сергей">
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+		<!--bower:css-->
+		<link href="app/css/plugins/normalize.css" rel="stylesheet">
+		<link href="app/css/plugins/flipclock.css" rel="stylesheet">
+		<link href="app/css/plugins/jquery.bxslider.css" rel="stylesheet">
+		<link rel="stylesheet" href="app/css/plugins/animate.min.css">
+		<!-- endbower-->
+		<link rel="stylesheet" type="text/css" href="app/fonts/stylesheet.css">
+		<link rel="stylesheet" type="text/css" href="app/css/main.css">
+		<title>Главная страница</title>
+	</head>
+	<body></body>
+	<div class="wrapper">
+		<header class="header">
+			<button class="toggle_mnu"><span class="sandwich"><span class="sw-topper"></span><span class="sw-bottom"></span><span class="sw-footer"></span></span></button>
+			<nav class="top_mnu">
+				<ul class="naviagtion__menu__list">
+					<li class="naviagtion__menu__item"><a href="#about__company" class="naviagtion__menu__link">О Компании</a></li>
+					<li class="naviagtion__menu__item"><a href="#our__values" class="naviagtion__menu__link">Почему мы?</a></li>
+					<li class="naviagtion__menu__item"><a href="#client" class="naviagtion__menu__link">Довольные клиенты</a></li>
+					<li class="naviagtion__menu__item"><a href="#price__course" class="naviagtion__menu__link">Цены</a></li>
+					<li class="naviagtion__menu__item"><a href="#contact-us" class="naviagtion__menu__link">Связаться с нами</a></li>
+					<li class="naviagtion__menu__item"><a href="#course" class="naviagtion__menu__link">О вебинарах</a></li>
+					<li class="naviagtion__menu__item"><a href="#download" class="naviagtion__menu__link">Полезная документация</a></li>
+				</ul>
+			</nav>
+			<div id="menu" class="header__top">
+				<div class="container">
+					<div class="row"><a href="#" class="logo"><img src="app/img/images/logo2.png" alt="spak logo" class="logo__img"></a>
+						<nav class="navigation__menu">
+							<ul class="naviagtion__menu__list">
+								<li class="naviagtion__menu__item"><a href="#about__company" class="naviagtion__menu__link">О Компании</a></li>
+								<li class="naviagtion__menu__item"><a href="#our__values" class="naviagtion__menu__link">Почему мы?</a></li>
+								<li class="naviagtion__menu__item"><a href="#client" class="naviagtion__menu__link">Довольные клиенты</a></li>
+								<li class="naviagtion__menu__item"><a href="#price__course" class="naviagtion__menu__link">Цены</a></li>
+								<li class="naviagtion__menu__item"><a href="#contact-us" class="naviagtion__menu__link">Связаться с нами</a></li>
+								<li class="naviagtion__menu__item"><a href="#course" class="naviagtion__menu__link">О вебинарах</a></li>
+								<li class="naviagtion__menu__item"><a href="#download" class="naviagtion__menu__link">Полезная документация</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+			<div class="header__bottom">
+				<div class="wrap-parallax">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="header__left left"><a href="#" class="logo"><img src="app/img/images/logo2.png" alt="spak logo" class="logo__img"></a>
+									<div class="title__wrap-main">
+										<p class="title-big">Здесь вас научат работать с недвижемостью настоящии проффесионалы!!</p>
+										<p class="title__litle"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa odio ipsa qui doloremque, perferendis voluptatum explicabo quas quisquam eum vero alias facilis consectetur, quasi voluptatibus sequi obcaecati officia nemo impedit.</p><a href="#" class="course__go-btn btn">К курсу </a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="header__right right">
+									<div class="clock"></div>
+									<div class="message">
+										<div id="flipcountdownbox1"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section id="about__company" class="about__company">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="about__company-left left-animations">
+							<div class="header__title-wrap about__company-title-wrap">
+								<h2 class="header__title-text about__company-title">О компании</h2>
+								<p class="header__title-text_litle about__company-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora quia iure consequatur quasi. Quae vel a deleniti illum, similique et suscipit perferendis, facilis magni aliquam ipsum ullam officia voluptates obcaecati.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="about__company-right right-animations">
+							<div class="slider">
+								<ul class="bxslider">
+									<li><img src="http://lorempixel.com/450/200/city/"></li>
+									<li><img src="http://lorempixel.com/450/200/food/"></li>
+									<li><img src="http://lorempixel.com/450/200/sports/"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="our__values" class="our__values">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header__title-wrap">
+							<h2 class="header__title-text">Почему мы? </h2>
+							<p class="header__title-text_litle">Мы подскажем, мы поможем </p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="skills__item skills__item-ideas up-animations">
+							<div class="skills__icons-border">
+								<div class="skills__icons"></div>
+							</div>
+							<div class="skills__title">
+								<h2>Лучшие</h2>
+							</div>
+							<div class="skills__text">
+								<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint inventore doloribus quia illum necessitatibus, dignissimos sequi obcaecati incidunt</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="skills__item skills__item-advantages up-animations">
+							<div class="skills__icons-border">
+								<div class="skills__icons"></div>
+							</div>
+							<div class="skills__title">
+								<h2>Лучшие</h2>
+							</div>
+							<div class="skills__text">
+								<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint inventore doloribus quia illum necessitatibus, dignissimos sequi obcaecati incidunt dolorum, delectus.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="skills__item skills__item-action up-animations">
+							<div class="skills__icons-border">
+								<div class="skills__icons"></div>
+							</div>
+							<div class="skills__title">
+								<h2>Лучшие</h2>
+							</div>
+							<div class="skills__text">
+								<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint inventore doloribus quia illum necessitatibus, dignissimos sequi obcaecati incidunt dolorum, delectus.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="course" class="course">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8">
+						<ul class="controls__tabs">
+							<li data-class="first" class="controls__tabs-item active"><a href="#" class="controls__tabs-link">link1</a></li>
+							<li data-class="second" class="controls__tabs-item"><a href="#" class="controls__tabs-link">link2</a></li>
+						</ul>
+						<ul class="tabs__list">
+							<li class="tabs__item tabs__item_first active">
+								<h2> Lorem ipsum dolor sit amet.</h2>
+								<p>  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui in doloribus fugit voluptatem suscipit eos pariatur non quidem placeat repellat libero vero, quod sit minima iste necessitatibus omnis cupiditate. Rerum, ratione? Neque sequi assumenda error qui facilis voluptatibus, inventore amet, expedita nostrum dignissimos alias ipsum laborum corrupti doloribus, soluta quo!</p>
+							</li>
+							<li class="tabs__item tabs__item_second">
+								<h2>tab2</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, modi.</p>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<div class="course-right right-animations"><img src="app/img/images/town/town-icon.png" alt="town" class="town__img"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="client" class="client">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header__title-wrap">
+							<h2 class="header__title-text">Наше значение</h2>
+							<p class="header__title-text_litle">Наше значение</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="messages__item">
+							<div class="messages__text down-animations">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis non ducimus illo nesciunt consequatur deleniti? Modi repudiandae, accusantium dolorem maiores.</div>
+							<div class="client-wrap up-animations">
+								<div class="client__foto-wrap"><img src="app/img/images/nf-2.png" alt="foto client" class="client__foto"></div>
+								<div class="client__name-wrap">
+									<p class="client__name">Алекснадр </p>
+									<p class="client__post">Кусок бомжа</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="messages__item">
+							<div class="messages__text down-animations">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum odit qui fugit ipsa hic tenetur saepe incidunt, eveniet sed libero!</div>
+							<div class="client-wrap up-animations">
+								<div class="client__foto-wrap"><img src="app/img/images/client.jpg" alt="foto client" class="client__foto"></div>
+								<div class="client__name-wrap">
+									<p class="client__name">Алекснадр </p>
+									<p class="client__post">Кусок бомжа</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="messages__item">
+							<div class="messages__text down-animations">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi omnis dignissimos unde nemo, delectus minus veniam excepturi vel. Voluptatum, minima.</div>
+							<div class="client-wrap up-animations">
+								<div class="client__foto-wrap"><img src="app/img/images/client.jpg" alt="foto client" class="client__foto"></div>
+								<div class="client__name-wrap">
+									<p class="client__name">Алекснадр </p>
+									<p class="client__post">Кусок бомжа</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="price__course" class="price__course">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header__title-wrap">
+							<h2 class="header__title-text">Наше значение</h2>
+							<p class="header__title-text_litle">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3 col-md-offset-3 col-sm-6 col-sm-offset-0">
+						<ul class="price__list price__list-base left-animations">
+							<li class="price__item"> Базовый пакет</li>
+							<li class="price__item"> $56
+								<p class="price__comment">Цена может зависить от месяца</p>
+							</li>
+							<li class="price__item"></li>
+							<li class="price__item"> Lorem ipsum dolor sit amet.</li>
+							<li class="price__item"> Lorem ipsum dolor sit amet.</li>
+							<li class="price__item"> Lorem ipsum dolor sit amet.</li>
+							<li class="price__item"> Lorem ipsum dolor sit amet.</li>
+						</ul>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<ul class="price__list price__list-full right-animations">
+							<li class="price__item"> Полный пакет</li>
+							<li class="price__item"> $34
+								<p class="price__comment">Цена может зависить от месяца</p>
+							</li>
+							<li class="price__item price__item-full">  Lorem ipsum dolor sit amet.</li>
+							<li class="price__item"> Lorem ipsum dolor sit amet.</li>
+							<li class="price__item">Lorem ipsum dolor sit amet.</li>
+							<li class="price__item"> Lorem ipsum dolor sit amet.</li>
+							<li class="price__item"> Lorem ipsum dolor sit amet.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="download" class="download">
+			<div class="wrap-paralax-download">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="header__title-wrap">
+								<h2 class="header__title-text">Наше значение</h2>
+								<p class="header__title-text_litle">Наше значение  </p>
+							</div><a href="#" class="btn download__button">download</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="contact-us" class="contact-us">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="header__title-wrap">
+							<h2 class="header__title-text">Наше значение</h2>
+							<p class="header__title-text_litle">Наше значение</p>
+						</div>
+					</div>
+					<form method="" name="form" id="feedback-form" class="form__mail">
+						<div class="col-md-6">
+							<input type="text" name="username" placeholder="Name" class="input">
+							<input type="email" name="email" placeholder="Email" class="input">
+							<input type="tel" name="phone" placeholder="Phone" class="input input__phone">
+						</div>
+						<div class="col-md-6">
+							<textarea rows="6" name="messages" placeholder="Messages" class="messages input messages__contact"></textarea>
+						</div>
+						<div class="col-md-12">
+							<input type="submit" name="send" value="Send message" class="button">
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<div class="contacts__phone-wrap"><a href="tel:+999999999" class="contacts__phone">+9 (999) 999-99-99</a></div>
+					</div>
+					<div class="col-md-6 col-sm-6 col-xs-6">
+						<ul class="socials__list-footer">
+							<li class="socials__item-footer socials__item-footer_vk"><a href="#" class="socials__link-footer socials__link-footer_vk"></a></li>
+							<li class="socials__item-footer socials__item-footer_fb"><a href="#" class="socials__link-footer socials__link-footer_fb"></a></li>
+							<li class="socials__item-footer socials__item-footer_tw"><a href="#" class="socials__link-footer socials__link-footer_tw"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- bower:js-->
+	<!--script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')-->
+	<script src="app/js/_plugins/jquery.min.js"></script>
+	<script src="app/js/_plugins/flipclock.min.js"></script>
+	<script src="app/js/_plugins/jquery.bxslider.min.js"></script>
+	<script src="app/js/_plugins/animate-css.js"></script>
+	<script src="app/js/_plugins/view.min.js"></script>
+	<script src="app/js/_plugins/mask.min.js"></script>
+	<script src="app/js/_plugins/jquery.validate.min.js"></script>
+	<script src="app/js/main.js"></script>
+	<!-- endbower-->
 </html>
