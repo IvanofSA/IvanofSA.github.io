@@ -20,24 +20,19 @@ $(function () {
         nextArrow: '<div class="slick-arrow slick-next"></div>'
     });
 
-    // $(window).scroll(function () {
-    //     var $menu = $('.header');
-    //
-    //     if ($(this).scrollTop() > 200 && $menu.hasClass("header__top")) {
-    //         $menu.fadeOut('fast', function () {
-    //             $(this).removeClass(' header__top ')
-    //                 .addClass("fixed")
-    //                 .fadeIn('fast');
-    //         });
-    //     } else if ($(this).scrollTop() <= 1 && $menu.hasClass("fixed")) {
-    //         $menu.fadeOut('fast', function () {
-    //             $(this).removeClass("fixed")
-    //                 .addClass("header__top")
-    //                 .fadeIn('fast');
-    //         });
-    //     }
-    //
-    // });
+    $(window).scroll(function () {
+        var $menu = $('.header');
+
+        if ($(this).scrollTop() > 200 && $menu.hasClass("header__top")) {
+            $menu.fadeOut('fast', function () {
+                $(this).removeClass(' header__top ').addClass("fixed").fadeIn('fast');
+            });
+        } else if ($(this).scrollTop() <= 1 && $menu.hasClass("fixed")) {
+            $menu.fadeOut('fast', function () {
+                $(this).removeClass("fixed").addClass("header__top").fadeIn('fast');
+            });
+        }
+    });
 
     var options = {
         id: 61042406,

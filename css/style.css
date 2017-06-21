@@ -130,7 +130,7 @@ option { padding: 10px; outline: 0; border: 0; }
 
 .social__list_fac a { width: 25px; background: url("/img/icon/facebook-black.png") no-repeat center; }
 
-.fixed { width: 100%; position: fixed; background: #fff; top: 0; z-index: 1000; }
+.fixed { width: 100%; position: fixed; background: #fff; padding: 15px 0; top: 0; z-index: 1000; }
 
 .hide { display: none; }
 
