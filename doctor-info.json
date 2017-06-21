@@ -1,0 +1,43 @@
+{
+  "photo": "/img/clinics-1.png",
+  "icon": "123",
+  "department": "123",
+  "position": "123",
+  "specialization": ["asdas", "dsdss"],
+  "science": "sdasd",
+  "education": "asdasd",
+  "worktime": "12312",
+  "languages": [
+    "df",
+    "df2312"
+  ],
+  "certificates": [
+    {
+      "image": "photos_certificates\/23\/Flower2.JPG",
+      "icon": "photos_certificates\/23\/icons\/Flower2.JPG",
+      "text": "cert 1"
+    },
+    {
+      "image": "photos_certificates\/23\/Flower5.JPG",
+      "icon": "photos_certificates\/23\/icons\/Flower5.JPG",
+      "text": "cert 2"
+    },
+    {
+      "image": "photos_certificates\/23\/r_assuta_logo.jpg",
+      "icon": "photos_certificates\/23\/icons\/r_assuta_logo.jpg",
+      "text": "cert 3"
+    },
+    {
+      "image": "",
+      "icon": "",
+      "text": "\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043a\u0430\u0442 \u0431\u0435\u0437 \u0444\u043e\u0442\u043e"
+    },
+    {
+      "image": "photos_certificates\/23\/Boston City Flow.jpg",
+      "icon": "photos_certificates\/23\/icons\/Boston City Flow.jpg",
+      "text": ""
+    }
+  ],
+  "publications": "asdasd",
+  "other": "adssadasd"
+}
