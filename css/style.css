@@ -196,7 +196,7 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .website { position: relative; height: 100%; width: 100%; }
 
-.header { margin-bottom: 94px; }
+.header { margin-top: 0; }
 
 .header__wrap { width: 100%; display: flex; margin-right: auto; margin-left: auto; flex-flow: row wrap; align-items: center; justify-content: space-between; }
 
@@ -242,7 +242,9 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .header__language_select:active { outline: 0; }
 
-.introduction { padding-bottom: 103px; background: url(../img/icon/bg-icon_1.png) no-repeat -110px 107px; }
+.fixed_top { margin-top: 30px; }
+
+.introduction { padding-bottom: 103px; padding-top: 152px; background: url(../img/icon/bg-icon_1.png) no-repeat -110px 107px; }
 
 .introduction__left { width: 57.62712%; float: left; margin-right: -100%; margin-left: 0; clear: none; }
 
@@ -332,7 +334,7 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .how_it_works__list li:before { content: ''; position: absolute; display: block; background: url("../img/icon/checkmark-circle.png") no-repeat center; width: 32px; height: 32px; }
 
-.how_it_works__btn { margin: 0 auto; }
+.how_it_works__btn { display: block; text-decoration: none; margin: 0 auto; }
 
 .clinic-block { padding: 45px 0 78px; position: relative; }
 
@@ -418,7 +420,7 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .banner { min-height: 250px; text-align: center; padding-bottom: 37px; }
 
-.banner__item { background: #b8b8b8; color: #fff; font-size: 24px; display: flex; justify-content: center; align-items: center; height: 250px; }
+.banner__item { display: block; text-decoration: none; background: #b8b8b8; color: #fff; font-size: 24px; display: flex; justify-content: center; align-items: center; height: 250px; }
 
 .banner__item:nth-child(1) { width: 23.72881%; float: left; margin-right: -100%; margin-left: 0; clear: none; width: 250px; }
 

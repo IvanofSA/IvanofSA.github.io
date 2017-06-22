@@ -20,17 +20,25 @@ $(function () {
         nextArrow: '<div class="slick-arrow slick-next"></div>'
     });
 
+    $('.js-slider_vert').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        // vertical: true,
+        autoplay: true,
+        autoplaySpeed: 2000
+        // prevArrow: '<div class="slick-arrow slick-prev"></div>',
+        // nextArrow: '<div class="slick-arrow slick-next"></div>'
+    });
+
     $(window).scroll(function () {
         var $menu = $('.header');
 
-        if ($(this).scrollTop() > 200 && $menu.hasClass("header__top")) {
-            $menu.fadeOut('fast', function () {
-                $(this).removeClass(' header__top ').addClass("fixed").fadeIn('fast');
-            });
-        } else if ($(this).scrollTop() <= 1 && $menu.hasClass("fixed")) {
-            $menu.fadeOut('fast', function () {
-                $(this).removeClass("fixed").addClass("header__top").fadeIn('fast');
-            });
+        if ($(this).scrollTop() > 0) {
+            $menu.removeClass('fixed_top');
+        } else if ($(this).scrollTop() <= 1) {
+            $menu.addClass("fixed_top");
         }
     });
 
