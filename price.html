@@ -22,14 +22,17 @@
 			<div class="website">
 				<header class="header header__top fixed fixed_top">
 					<div class="container">
+						<div class="preheader">
+							<div class="preheader__wrap"><a class="preheader__message" href="#">сообщения</a><a class="preheader__events" href="#">события в консультациях</a><a class="preheader__activity" href="#">Последняя активность: <span>26-03-2017 00:27</span></a></div>
+						</div>
 						<div class="header__wrap"><a class="header__logo" href=""><img src="img/logo.png" alt=""></a>
 							<nav class="header__nav nav">
 								<ul class="nav__list">
-									<li class="nav__item active"><a href="#">Главная</a></li>
-									<li class="nav__item"><a href="#">Клиники</a></li>
-									<li class="nav__item"><a href="#">Врачи</a></li>
-									<li class="nav__item"><a href="#">Цены</a></li>
-									<li class="nav__item"><a href="#">Конаткты</a></li>
+									<li class="nav__item"><a href="/">Главная</a></li>
+									<li class="nav__item"><a href="/clinics.html">Клиники</a></li>
+									<li class="nav__item"><a href="/doctors.html">Врачи</a></li>
+									<li class="nav__item active"><a href="/price.html">Цены</a></li>
+									<li class="nav__item"><a href="/contacts.html">Конаткты</a></li>
 								</ul>
 							</nav>
 							<div class="header__auth"><a class="header__link header__auth_login js-login" href="#">Войти</a><a class="header__link helinkader__auth_reg js-login" href="#">Регистрация</a></div>
@@ -49,7 +52,8 @@
 						<div class="price__description description">Цены на консультацию предоставляет каждая клиника самостоятельно</div>
 						<div class="price__text text">Выберите клинику из списка для ознакомления с её расценками.<br/>При выборе страны Вам будут показаны цены на услуги во всех клиниках выбранной страны. Цены указаны в валюте страны расположения клиники.</div>
 						<div class="price__choose choose">
-							<form name="filterClinic" id="filterPrice" method="post" data-form-type="ajax" action="">
+							<!--form(name="filterClinic" id="filterPrice" method="post" data-form-type="ajax" action="http://www.acvm.ru/1/api_prices_select.php")-->
+							<form name="filterClinic" id="filterPrice" method="post" data-form-type="ajax" action="price.json">
 								<div class="choose__spec"><span class="choose__label">Специализация:</span>
 									<div class="choose__select"> <select name="specSelected">
                       <option value="0">Все</option>
@@ -73,23 +77,22 @@
 								<div class="price__clinic counrty__clinic">
 									<div class="price__clinic_name counrty__clinic_name"><span>Assuta</span><em>The best clinic in Israel</em><img src="/img/clinics-1.png" alt=""></div>
 									<div class="price__list">
-										<div class="price__item"><span class="price__prop">Первичная консультация</span>
+										<div class="price__item"><span class="price__prop ">Стоимость консультации</span>
 											<div class="price__dots"></div><span class="price__value">1100 ILS</span> </div>
-										<div class="price__item"><span class="price__prop">Первичная консультация</span>
+									</div>
+									<div class="price__decription_text">*Стоимость консультации у перечисленных ниже докторов может<br/>отличаться от стоимости консультации клиники</div>
+									<div class="price__list price__list_doctors">
+										<div class="price__item"><span class="price__prop js_doctor-info">Фамильный Доктор Сергеевич </span>
 											<div class="price__dots"></div><span class="price__value">1100 ILS</span> </div>
-										<div class="price__item"><span class="price__prop">Первичная консультация</span>
-											<div class="price__item"></div><span class="price__value">1100 ILS</span> </div>
+										<div class="price__item"><span class="price__prop js_doctor-info">Фамильный Доктор Сергеевич </span>
+											<div class="price__dots"></div><span class="price__value">1100 ILS</span> </div>
 									</div>
 								</div>
 								<div class="price__clinic counrty__clinic">
-									<div class="price__clinic_name counrty__clinic_name"><span>Assuta</span><em>The best clinic in Israel</em><img src="/img/clinics-1.png" alt=""></div>
+									<div class="price__clinic_name counrty__clinic_name"><span>Assuta</span><em>The best clinic in Israel</em><img class="default__img" src="/img/default_logo.png" alt=""></div>
 									<div class="price__list">
 										<div class="price__item"><span class="price__prop">Первичная консультация</span>
 											<div class="price__dots"></div><span class="price__value">1100 ILS</span> </div>
-										<div class="price__item"><span class="price__prop">Первичная консультация</span>
-											<div class="price__dots"></div><span class="price__value">1100 ILS</span> </div>
-										<div class="price__item"><span class="price__prop">Первичная консультация</span>
-											<div class="price__item"></div><span class="price__value">1100 ILS</span> </div>
 									</div>
 								</div>
 							</div>
@@ -100,10 +103,13 @@
 									<div class="price__list">
 										<div class="price__item"><span class="price__prop">Первичная консультация</span>
 											<div class="price__dots"></div><span class="price__value">1100 ILS</span> </div>
-										<div class="price__item"><span class="price__prop">Первичная консультация</span>
+									</div>
+									<div class="price__decription_text">*Стоимость консультации у перечисленных ниже докторов может<br/>отличаться от стоимости консультации клиники</div>
+									<div class="price__list price__list_doctors">
+										<div class="price__item"><span class="price__prop">Фамильный Доктор Сергеевич </span>
 											<div class="price__dots"></div><span class="price__value">1100 ILS</span> </div>
-										<div class="price__item"><span class="price__prop">Первичная консультация</span>
-											<div class="price__item"></div><span class="price__value">1100 ILS</span> </div>
+										<div class="price__item"><span class="price__prop">Фамильный Доктор Сергеевич </span>
+											<div class="price__dots"></div><span class="price__value">1100 ILS</span> </div>
 									</div>
 								</div>
 							</div>
@@ -118,9 +124,10 @@
 						<div class="footer__copyright">© 2016 «International Medical Portal»</div>
 						<nav class="footer__nav nav">
 							<div class="nav__list">
-								<div class="nav__item"> <a href="#">О нас </a></div>
-								<div class="nav__item"> <a href="#">Вопросы-ответы</a></div>
-								<div class="nav__item"> <a href="#">Задать вопрос</a></div>
+								<div class="nav__item"><a href="/review.html">О нас </a></div>
+								<div class="nav__item"><a href="/answer.html">Вопросы-ответы</a></div>
+								<div class="nav__item"><a href="#">Задать вопрос</a></div>
+								<div class="nav__item"><a href="#">Партнерам</a></div>
 							</div>
 						</nav>
 						<div class="footer__social social">
@@ -135,29 +142,48 @@
 			</div>
 		</div>
 		<div class="popup__back"></div>
-		<div class="popup popup_login">
+		<div class="popup popup_doctor-info">
 			<div class="popup__close-button"></div>
-			<div class="popup__header">Вход</div>
-			<div class="popup__content">
-				<form class="popup__form form form_white" id="login-form" name="userLogged_form" target="frame_temp" action="enter.php" method="post">
-					<div class="form__box form__box_login-email"> <input class="form__input" type="text" name="username" placeholder="Email или телефон +7..." required data-validation-type="required" autocomplete="off">
-						<div class="form__error-text"></div>
-					</div>
-					<div class="form__box form__box_login-pass"> <input class="form__input" type="password" name="password" placeholder="Пароль" required data-validation-type="required" autocomplete="off">
-						<div class="form__error-text"></div>
-					</div>
-					<div class="form__box form__box_link"><a class="form__link js_open-popup-pass-recover" href="#">Восстановить пароль</a></div>
-					<div class="form__box form__box_link"><a class="form__link js_go-to-registration" href="#">Регистрация</a></div> <button class="form__button" type="submit">Войти</button>
-					<!--.social.social_auth-->
-					<!--    .social__header Вход через соцсети-->
-					<!--    ul.social__list-->
-					<!--        li.social__list-item.social__list-item_fb-->
-					<!--            a(href="#")-->
-					<!--        li.social__list-item.social__list-item_vk-->
-					<!--            a(href="#")-->
-					<!--        li.social__list-item.social__list-item_od-->
-					<!--            a(href="#")-->
-				</form>
+			<div class="popup__content doctor-info"></div>
+		</div>
+		<div class="popup popup_login login">
+			<div class="popup__close-button"></div>
+			<div class="popup__title login__title">Вход/Регистрация</div>
+			<div class="login__left">
+				<ul class="login__controls_tabs controls__tabs">
+					<li class="controls__tabs-item active" data-class="first"><a class="controls__tabs-link" href="#">Вход</a></li>
+					<li class="controls__tabs-item" data-class="second"><a class="controls__tabs-link" href="#">Регистрация</a></li>
+				</ul>
+			</div>
+			<div class="login__right">
+				<ul class="login__tabs_list tabs__list">
+					<li class="tabs__item tabs__item_first active">
+						<div class="login__content">
+							<form class="popup__form form form_white" id="login-form" name="userLogged_form" target="frame_temp" action="" method="post">
+								<div class="form__box form__box_login-email">
+									<div class="content-row__label">Логин</div> <input class="form__input" type="text" name="userNameEnterLK" placeholder="" autocomplete="off">
+									<div class="form__error-text">Неверный логин или пароль</div>
+								</div>
+								<div class="form__box form__box_login-pass">
+									<div class="content-row__label">Пароль</div> <input class="form__input" type="password" name="pswrdEnterLK" placeholder="" autocomplete="off">
+									<div class="form__error-text"> Неверный логин или пароль</div>
+								</div>
+								<div class="form__box form__box_checkbox"> <input class="form__checkbox" type="checkbox" name="clearSession">
+									<div class="content-row__label">Чужой компьютер?</div>
+								</div> <button class="form__button btn" type="submit">Войти</button>
+								<div class="form__box form__box_link"><a class="form__link" href="#">Забыли пароль?</a></div>
+							</form>
+						</div>
+					</li>
+					<!--li.tabs__item.tabs__item_second-->
+					<!--    h2 tab2-->
+				</ul>
+			</div>
+		</div>
+		<div class="popup popup_sertificat"><a class="popup__close-button" href=""></a>
+			<!--.popup__header Cthnbabr-->
+			<div class="popup__content form_white">
+				<div class="popup__img"><img src="" alt=""></div>
 			</div>
 		</div>
 	</body>

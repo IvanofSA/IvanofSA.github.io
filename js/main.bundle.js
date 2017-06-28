@@ -12,25 +12,29 @@ var popups = {};
 $(function () {
     var _this = this;
 
-    $('.js-slider').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        prevArrow: '<div class="slick-arrow slick-prev"></div>',
-        nextArrow: '<div class="slick-arrow slick-next"></div>'
-    });
+    if ($('.js-slider').length) {
+        $('.js-slider').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            prevArrow: '<div class="slick-arrow slick-prev"></div>',
+            nextArrow: '<div class="slick-arrow slick-next"></div>'
+        });
+    }
+    if ($('.js-slider_vert').length) {
 
-    $('.js-slider_vert').slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        // vertical: true,
-        autoplay: true,
-        autoplaySpeed: 2000
-        // prevArrow: '<div class="slick-arrow slick-prev"></div>',
-        // nextArrow: '<div class="slick-arrow slick-next"></div>'
-    });
+        $('.js-slider_vert').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            // vertical: true,
+            autoplay: true,
+            autoplaySpeed: 2000
+            // prevArrow: '<div class="slick-arrow slick-prev"></div>',
+            // nextArrow: '<div class="slick-arrow slick-next"></div>'
+        });
+    }
 
     $(window).scroll(function () {
         var $menu = $('.header');
@@ -92,12 +96,12 @@ $(function () {
         },
         controller: function controller() {
             var that = this;
-            that.$openBtn.on('click', function (e) {
+            $('body').on('click', '.js-open-tab', function (e) {
                 if (e.target.tagName == 'H3' || e.target.tagName == 'SPAN') {
 
                     if ($(this).hasClass('doctor__wrap')) {
                         var doctorId = $(this).attr('data-doctor-id');
-
+                        var doctorInfo = '';
                         $.ajax({
                             url: 'doctor-info.json',
                             // type: form.attr('method'),
@@ -106,13 +110,11 @@ $(function () {
                             // data: data,
 
                             success: function success(data) {
-                                console.log(data);
-
                                 function parseArr(arr) {
 
                                     if (Array.isArray(arr)) {
                                         for (var i = 0; i < arr.length; i++) {
-                                            var specTr = (specTr ? specTr : '') + '' + arr[i];
+                                            var specTr = (specTr ? specTr : '') + '' + arr[i] + '<br/>';
                                         }
                                         return specTr;
                                     } else {
@@ -120,21 +122,25 @@ $(function () {
                                     }
                                 }
 
+                                console.log(data);
+
                                 var certif = data.certificates;
+                                var containerDoctorInfo = $('.doctor__content');
+
+                                containerDoctorInfo.html('');
 
                                 for (var i = 0; i < certif.length; i++) {
-                                    console.log(certif[i].text);
-                                    var certifHtml = certifHtml + '<li><span>' + certif[i].text + '</span><img src="' + certif[i].icon + '" alt=""><img class="img_big" src="' + certif[i].image + '" alt=""></li>';
+                                    // console.log(certif[i].text);
+                                    var certifHtml = (certifHtml ? certifHtml : '') + '<li>' + (certif[i].icon ? '<div class="doctor__sertificat doctor__sertificat_icon js_popup_sert"><img src="' + certif[i].icon + '" alt=""></div>' : '') + (certif[i].text ? '<div class="doctor__sertificat doctor__sertificat_text">' + certif[i].text + '</div>' : '') + (certif[i].image ? '<div class="doctor__sertificat_img"><img class="img_big" src="' + certif[i].image + '" alt=""></div>' : '') + '</li>';
                                 }
 
-                                var doctorInfo = '<div class="doctor__content_title">' + '<span>Фамильный Доктор Сергеевич</span>' + '</div>' + '<div class="doctor__content_left">' + '<div class="doctor__content_foto">' + '<img src="/img/doctor-1.png" alt=""></div>' + '</div>' + '<div class="doctor__content_right">' + '<table><tbody>' + '<tr><th>Отделение</th><td>' + data.department + '</td></tr>' + '<tr><th>Специализация:</th><td>' + parseArr(data.specialization);+'</td></tr>';
-                                '<tr><th>Учёная степень:</th><td>' + parseArr(data.department);+'</td></tr>' + '<tr><th>Образование:</th><td>' + parseArr(data.education);+'</td></tr>' + '<tr><th>Врачебный стаж:</th><td>' + parseArr(data.worktime);+'</td></tr>' + '<tr><th>Языки консультаций:</th><td>' + parseArr(data.languages);+'</td></tr>' + '<tr><th>Сертификаты:</th><td>' + '<ul>' + certifHtml + '</ul></td></tr>' + '<tr><th>Публикации:</th><td>' + parseArr(data.publications);+'</td></tr>' + '<tr><th>Дополнительные сведения:</th><td>' + parseArr(data.other);+'</td></tr>' + '</tbody></table></div>';
+                                doctorInfo = '<div class="doctor__content_title">' + '<span>' + data.name + '</span>' + '</div>' + '<div class="doctor__content_left">' + '<div class="doctor__content_foto">' + '<img src=' + data.photo + ' alt=""></div>' + '</div>' + '<div class="doctor__content_right">' + '<table><tbody>' + '<tr><th>Клиника:</th><td>' + data.department + '</td></tr>' + '<tr><th>Отделение:</th><td>' + parseArr(data.position) + '</td></tr>' + '<tr><th>Специализация:</th><td>' + parseArr(data.specialization) + '</td></tr>' + '<tr><th>Учёная степень:</th><td>' + parseArr(data.department) + '</td></tr>' + '<tr><th>Образование:</th><td>' + parseArr(data.education) + '</td></tr>' + '<tr><th>Врачебный стаж:</th><td>' + parseArr(data.worktime) + '</td></tr>' + '<tr><th>Языки консультаций:</th><td>' + parseArr(data.languages) + '</td></tr>' + '<tr><th>Сертификаты:</th><td>' + '<ul>' + certifHtml + '</ul></td></tr>' + '<tr><th>Публикации:</th><td>' + parseArr(data.publications) + '</td></tr>' + '<tr><th>Дополнительные<br/>сведения:</th><td>' + parseArr(data.other) + '</td></tr>' + '</tbody></table></div>';
 
-                                var containerDoctorInfo = $('.doctor__content');
-                                containerDoctorInfo.html(doctorInfo);
+                                containerDoctorInfo.append(doctorInfo);
+                                doctorInfo = '';
                             },
                             error: function error(_error) {
-                                console.log(_error);
+                                // console.log(error);
                             }
                         });
                     }
@@ -144,7 +150,6 @@ $(function () {
 
                     if (checkContent.length || checkParagraf.length) {
                         if ($(this).hasClass('open')) {
-                            console.log('sad');
                             $(this).removeClass('open');
                         } else {
                             var currentIndex = that.$tabParent.index(parent);
@@ -166,6 +171,33 @@ $(function () {
     };
     tab.init();
 
+    var SertifPopup = new _popup2.default({
+        backSelector: '.popup__back',
+        popupsSelector: '.popup',
+        popupSelector: '.popup_sertificat',
+        popupActiveClass: 'show',
+        backActiveClass: 'show',
+        // closeButtonsSelector: '.popup__close-button, .js-bad-answer-close',
+        customOpen: function customOpen($elem) {
+            this.$popup.find('.popup__img img').attr('src', $elem);
+            this.openPopup();
+        }
+    });
+    popups.SertifPopup = SertifPopup;
+
+    $('.popup__close-button').on('click', function (e) {
+        e.preventDefault();
+        var popup = $(_this).parent('.popup');
+        popup.removeClass('show');
+    });
+
+    $('body').on('click', '.js_popup_sert', function () {
+        var $img = $(this).siblings('.doctor__sertificat_img'),
+            $src = $img.find('img').attr('src');
+        SertifPopup.customOpen($src);
+        // popups.SertifPopup.openPopup();
+    });
+
     $('.popup__back').on('click', function () {
 
         var $body = $('body');
@@ -185,10 +217,6 @@ $(function () {
         popupActiveClass: 'show',
         backActiveClass: 'show',
         closeButtonsSelector: '.popup__close-button, .js-bad-answer-close'
-        // customOpen: function ($elem) {
-        // 	this.$popup.find('.popup__text_good-answer').text($elem);
-        // 	this.openPopup();
-        // }
     });
     popups.loginPopup = loginPopup;
 
@@ -202,6 +230,7 @@ $(function () {
         var form = $(this.form);
         var formId = form.attr('id');
         var formType = form.data('form-type');
+        // var formType = form.data('form-type');
         var data = form.serialize();
         var container = $('.container');
         var countryWrap = container.find('.counrty__wrap');
@@ -209,64 +238,101 @@ $(function () {
         if (formType == "ajax") {
 
             $.ajax({
-                url: 'doctor.json',
+                // url: 'price.json',
+                // url: 'contacts.json',
                 // type: form.attr('method'),
-                // url: form.attr('action'),
+                url: form.attr('action'),
                 // dataType: 'json',
                 // data: data,
 
                 success: function success(data) {
-                    countryWrap.html('');
 
-                    data.forEach(function (el) {
-                        var clinicClass = '',
-                            clinicArr,
-                            doctorsHtml = '',
-                            priceContainerHtml = '',
-                            priceHtml = '';
+                    if (formId == 'filterContact') {
+                        $('.contacts__connection_list').html('');
 
-                        if (formId == 'filterDoctor') {
-                            clinicClass = 'doctor';
-                            clinicArr = el.clinics;
+                        data.clinics.forEach(function (el) {
 
-                            for (var i = 0; i < clinicArr.length; i++) {
-                                var doctorsArr = clinicArr[i].doctors;
-                                for (var k = 0; k < doctorsArr.length; k++) {
+                            var itemAdress = (itemAdress ? itemAdress : '') + '<li class="contacts__connection_item">' + '<ul>' + '<li class="contacts__connection_adress"><span>' + el.name + '</span></li>' + '<li class="contacts__connection_phone"><span>' + el.phones + '</span></li>' + '<li class="contacts__connection_site">' + '<a href="' + el.web + '">' + el.web + '</a></li>' + '<li class="contacts__connection_mail">' + '<a href="mailto:' + el.email + '">' + el.email + '</a></li>' + '</ul></li>';
 
-                                    doctorsHtml += '<div class="doctor__wrap js-open-tab" data-doccor-id="' + doctorsArr[k].id + '">' + '<h3>' + doctorsArr[k].name + '</h3>' + '</div>';
+                            $('.contacts__connection_list').append(itemAdress);
+                        });
+                    } else {
+                        countryWrap.html('');
+                        data.forEach(function (el) {
+                            var clinicClass = '',
+                                clinicArr,
+                                doctorsHtml = '',
+                                priceContainerHtml = '',
+                                priceHtml = '';
+
+                            if (formId == 'filterDoctor') {
+                                clinicClass = 'doctor';
+                                clinicArr = el.clinics;
+
+                                for (var i = 0; i < clinicArr.length; i++) {
+                                    var doctorsArr = clinicArr[i].doctors;
+                                    for (var k = 0; k < doctorsArr.length; k++) {
+
+                                        doctorsHtml += '<div class="doctor__wrap js-open-tab" data-doccor-id="' + doctorsArr[k].id + '">' + '<h3 class="doctor__wrap_name">' + doctorsArr[k].name + '</h3>' + '<div class="doctor__content"></div></div>';
+                                    }
                                 }
-                            };
-                        }
-
-                        if (formId == 'filterClinic') {
-                            clinicClass = 'clinics';
-                            clinicArr = el.clinics;
-                        }
-
-                        if (formId == 'filterPrice') {
-                            clinicClass = 'price';
-                            clinicArr = el.clinics;
-
-                            for (var _i = 0; _i < clinicArr.length; _i++) {
-                                priceHtml += '<div class="price__item">' + '<span class="price__prop">Первичная консультация</span>' + '<div class="price__dots"></div>' + '<span class="price__value">' + clinicArr[_i].cost + ' ' + el.currency + '</span> ' + '</div>';
-
-                                priceContainerHtml = '<div class="price__list"> ' + priceHtml + '</div>';
-                            };
-                        }
-
-                        for (var _i2 = 0; _i2 < clinicArr.length; _i2++) {
-                            var clinicItem = clinicArr[_i2];
-
-                            if (clinicClass == 'doctor') {
-                                clinicItem = clinicArr[_i2].clinic;
+                                ;
                             }
 
-                            var clinicLogo = clinicItem.logo ? '<img src=' + clinicItem.logo + ' alt="">' : '';
-                            var clinicsHtml = '<div class="' + clinicClass + '__clinic counrty__clinic">' + '<div class="' + clinicClass + '__clinic_name counrty__clinic_name">' + '<span>' + clinicItem.name + '</span>' + '<em>' + clinicItem.about + '</em>' + clinicLogo + '</div>' + (priceContainerHtml ? priceContainerHtml : '') + '</div>';
-                        }
+                            if (formId == 'filterClinic') {
+                                clinicClass = 'clinics';
+                                clinicArr = el.clinics;
 
-                        countryWrap.append('<div class="' + clinicClass + '__country counrty">' + '<h3>' + el.country + '</h3>' + clinicsHtml + '' + (doctorsHtml ? doctorsHtml : '') + '</div>');
-                    });
+                                for (var _i = 0; _i < clinicArr.length; _i++) {
+                                    var clinicItem = clinicArr[_i];
+                                    console.log(clinicItem);
+                                    var clinicLogo = clinicItem.logo ? '<img src=' + clinicItem.logo + ' alt="">' : '<img src="/img/default_logo.png" alt="" class="default__img">';
+                                    var clinicHtml = '<div class="clinics__clinic_name counrty__clinic_name">' + '<div class="counrty__clinic_left">' + clinicLogo + '</div>' + '<div class="counrty__clinic_right"><span>' + clinicItem.name + '</span>' + '<em>' + clinicItem.about + '</em></div></div>';
+                                }
+                            }
+
+                            if (formId == 'filterPrice') {
+                                clinicClass = 'price';
+                                clinicArr = el.clinics;
+                                for (var _i2 = 0; _i2 < clinicArr.length; _i2++) {
+
+                                    if (clinicArr[_i2].doctors) {
+                                        var doctorPriceDefault = '<div class="price__decription_text">*Стоимость консультации у перечисленных ниже докторов может<br/>отличаться от стоимости консультации клиники</div>';
+                                        var doctorPriceInfo = '';
+
+                                        for (var _k = 0; _k < clinicArr[_i2].doctors.length; _k++) {
+                                            var doctorItem = clinicArr[_i2].doctors[_k];
+
+                                            doctorPriceInfo += '<div class="price__item">' + '<span class="price__prop js_doctor-info">' + doctorItem.name + '</span>' + '<div class="price__dots"></div>' + '<span class="price__value">' + doctorItem.cost + '</span></div>';
+
+                                            var doctorsList = '<div class="price__list price__list_doctors" data-id="' + doctorItem.id + '">' + doctorPriceInfo + '</div>';
+                                        }
+                                    }
+
+                                    priceHtml += '<div class="price__item">' + '<span class="price__prop">Стоимость консультации</span>' + '<div class="price__dots"></div>' + '<span class="price__value">' + clinicArr[_i2].cost + ' ' + el.currency + '</span> ' + '</div>';
+
+                                    priceContainerHtml = '<div class="price__list"> ' + priceHtml + '</div>' + (clinicArr[_i2].doctors ? doctorPriceDefault + doctorsList : '');
+                                }
+                                ;
+                            }
+
+                            for (var _i3 = 0; _i3 < clinicArr.length; _i3++) {
+                                var clinicItem = clinicArr[_i3];
+
+                                if (clinicClass == 'doctor') {
+                                    clinicItem = clinicArr[_i3].clinic;
+                                }
+
+                                var clinicLogo = clinicItem.logo ? '<img src=' + clinicItem.logo + ' alt="">' : '<img src="/img/default_logo.png" alt="" class="default__img">';
+                                var clinicsHtml = '<div class="' + clinicClass + '__clinic counrty__clinic">' + '<div class="' + clinicClass + '__clinic_name counrty__clinic_name">' + '<span>' + clinicItem.name + '</span>' + '<em>' + clinicItem.about + '</em>' + clinicLogo + '</div>' + (priceContainerHtml ? priceContainerHtml : '') + '</div>';
+                            }
+                            if (clinicClass == 'clinics') {
+                                countryWrap.append('<div class="' + clinicClass + '__country counrty__clinic">' + '<h3>' + el.country + '</h3>' + clinicHtml + '' + (doctorsHtml ? doctorsHtml : '') + '</div>');
+                            } else {
+                                countryWrap.append('<div class="' + clinicClass + '__country counrty">' + '<h3>' + el.country + '</h3>' + clinicsHtml + '' + (doctorsHtml ? doctorsHtml : '') + '</div>');
+                            }
+                        });
+                    }
                 },
                 error: function error(_error2) {
                     console.log(_error2);
@@ -281,6 +347,69 @@ $(function () {
 
         var attentionBlock = $('.contacts__connection');
         attentionBlock.toggleClass('hide');
+    });
+
+    var doctorInfoPopup = new _popup2.default({
+        backSelector: '.popup__back',
+        popupsSelector: '.popup',
+        popupSelector: '.popup_doctor-info',
+        popupActiveClass: 'show',
+        backActiveClass: 'show',
+        closeButtonsSelector: '.popup__close-button, .js-bad-answer-close',
+        customOpen: function customOpen($elem) {
+            var container = this.$popup.find('.doctor-info');
+            container.html('');
+            container.append($elem);
+            this.openPopup();
+        }
+    });
+    popups.doctorInfoPopup = doctorInfoPopup;
+
+    $('body').on('click', '.js_doctor-info', function () {
+
+        var idDoctor = $(this).data('id');
+        var doctorInfo = '';
+        console.log('asdasd');
+
+        $.ajax({
+            url: 'doctor-info.json',
+            // url: 'contacts.json',
+            // type: 'POST',
+            // url: form.attr('action'),
+            // dataType: 'json',
+            // data: 'doctorID': idDoctor,
+
+            success: function success(data) {
+                function parseArr(arr) {
+                    if (Array.isArray(arr)) {
+                        for (var i = 0; i < arr.length; i++) {
+                            var specTr = (specTr ? specTr : '') + '' + arr[i] + '<br/>';
+                        }
+                        return specTr;
+                    } else {
+                        return arr;
+                    }
+                }
+
+                var certif = data.certificates;
+                var containerDoctorInfo = $('.doctor__content');
+
+                containerDoctorInfo.html('');
+
+                for (var i = 0; i < certif.length; i++) {
+                    // console.log(certif[i].text);
+                    var certifHtml = (certifHtml ? certifHtml : '') + '<tr><th>' + (certif[i].icon ? '<div class="doctor__sertificat doctor__sertificat_icon js_popup_sert"><img src="' + certif[i].icon + '" alt=""></div>' : '') + (certif[i].image ? '<div class="doctor__sertificat_img"><img class="img_big" src="' + certif[i].image + '" alt=""></div>' : '') + '</th><td>' + (certif[i].text ? '<div class="doctor__sertificat doctor__sertificat_text">' + certif[i].text + '</div>' : '') + '</td></tr>';
+                }
+
+                doctorInfo = '<div class="doctor-info__name">' + data.name + '</div>' + '<div class="doctor-info__left">' + '<div class="doctor-info__foto">' + '<img src=' + data.photo + ' alt=""></div>' + '<a href="" class="doctor-info__btn btn">Оставить заявку <br/> на консультацию</a>' + '</div>' + '<div class="doctor-info__right">' + '<div class="doctor-info__content">' + '<table><tbody>' + '<tr><th>Клиника:</th><td>' + data.department + '</td></tr>' + '<tr><th>Отделение:</th><td>' + parseArr(data.position) + '</td></tr>' + '<tr><th>Специализация:</th><td>' + parseArr(data.specialization) + '</td></tr>' + '<tr><th>Учёная степень:</th><td>' + parseArr(data.department) + '</td></tr>' + '<tr><th>Образование:</th><td>' + parseArr(data.education) + '</td></tr>' + '<tr><th>Врачебный стаж:</th><td>' + parseArr(data.worktime) + '</td></tr>' + '<tr><th>Языки консультаций:</th><td>' + parseArr(data.languages) + '</td></tr>' + '<tr><th>Сертификаты:</th></th><tr>' + certifHtml + '<tr><th>Публикации:</th><td>' + parseArr(data.publications) + '</td></tr>' + '<tr><th>Дополнительные<br/>сведения:</th><td>' + parseArr(data.other) + '</td></tr>' + '</tbody></table></div></div>';
+
+                doctorInfoPopup.customOpen(doctorInfo);
+                doctorInfo = '';
+            },
+            error: function error(_error3) {
+                console.log(_error3);
+            }
+        });
     });
 });
 
