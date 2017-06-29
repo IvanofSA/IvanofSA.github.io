@@ -1,0 +1,16 @@
+{
+  "clinics": [
+    {
+      "name": "Assuta",
+      "phones": "+972 3 764-3247",
+      "web": "http:\/\/www.assuta.co.il",
+      "email": "info@assuta.co.il"
+    },
+    {
+      "name": "Ihilov",
+      "phones": "+972 3 1234568",
+      "web": "",
+      "email": "info@ihilov.co.il"
+    }
+  ]
+}
