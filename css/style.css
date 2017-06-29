@@ -474,7 +474,17 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .popup__success-icon { background: url("../img/icons/Check_icon.svg") no-repeat center; background-size: cover; height: 53px; width: 57px; margin: auto; margin-bottom: 15px; }
 
-.popup_doctor-info { width: 945px; padding: 42px 97px; }
+.popup_doctor-info { width: 945px; height: 95vh; overflow-y: scroll; padding: 42px 97px; }
+
+.popup_doctor-info::-webkit-scrollbar-button { background-image: url(""); background-repeat: no-repeat; width: 6px; height: 0px; }
+
+.popup_doctor-info::-webkit-scrollbar-track { background-color: #fff; box-shadow: 0px 0px 3px #fff inset; }
+
+.popup_doctor-info::-webkit-scrollbar-thumb { -webkit-border-radius: 5px; border-radius: 5px; background-color: #eaeaea; box-shadow: 0px 1px 1px #fff inset; background-image: url("../img/icon/scroll.png"); background-position: center; background-repeat: no-repeat; }
+
+.popup_doctor-info::-webkit-resizer { background-image: url(""); background-repeat: no-repeat; width: 7px; height: 0px; }
+
+.popup_doctor-info::-webkit-scrollbar { width: 11px; }
 
 .doctor-info__name { font-size: 36px; color: #0195ba; font-family: 'pf_din_promedium', Arial, sans-serif; margin-bottom: 24px; font-weight: 600; }
 
@@ -508,7 +518,7 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .preheader__activity { text-decoration: none; display: inline-block; font-family: Arial, Helvetica, sans-serif; text-transform: uppercase; font-size: 12px; color: #9b9b9b; }
 
-.login { width: 945px; padding: 73px 97px 160px; }
+.login { width: 945px; box-sizing: border-box; padding: 63px 97px 90px; }
 
 .login__title { position: relative; font-family: 'pf_din_promedium', Arial, sans-serif; font-size: 35px; color: #0195ba; text-transform: uppercase; letter-spacing: -3px; /* font-weight: 700; */ margin-bottom: 55px; }
 
@@ -532,9 +542,9 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .login .form__box .form__link { font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 20px; text-decoration: none; border-bottom: 1px dashed #f1a80a; text-decoration: none; margin-left: 30px; }
 
-.login .form__box_checkbox { margin-bottom: 10px; }
+.login .form__box_checkbox { margin-bottom: 20px; }
 
-.login .form__box_checkbox .content-row__label { display: inline-block; text-transform: uppercase; color: #555; font-size: 16px; font-family: Arial, Helvetica, sans-serif; }
+.login .form__box_checkbox .content-row__label { display: inline-block; text-transform: uppercase; margin-bottom: 0; padding-left: 15px; color: #555; font-size: 16px; font-family: Arial, Helvetica, sans-serif; }
 
 .login .form__box_login-pass { margin-bottom: 20px; }
 
@@ -543,6 +553,16 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 .login .form__error-text { color: #f43737; font-style: italic; font-size: 14px; position: absolute; right: 0px; bottom: -25px; }
 
 .login .form__button { display: inline-block; border: 0; outline: 0; background: #f1a80a; font-family: 'pf_din_promedium', Arial, sans-serif; color: #fff; font-size: 30px; text-transform: uppercase; width: 170px; height: 65px; line-height: 65px; }
+
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label span { display: inline-block; width: 20px; height: 20px; margin: -1px 4px 0 0; vertical-align: top; background: url(../img/icon/checkbox-empty.png) center no-repeat; cursor: pointer; }
+
+input[type="checkbox"] { display: none; }
+
+input[type="checkbox"] + label span { display: inline-block; vertical-align: top; width: 20px; height: 20px; margin: -1px 4px 0 0; vertical-align: top; background: url(../img/icon/checkbox-empty.png) center no-repeat; cursor: pointer; }
+
+input[type="checkbox"]:checked + label span { background: url(../img/icon/checkbox-check.png) center no-repeat; }
 
 .answer-page .header { margin-bottom: 45px; }
 
@@ -798,7 +818,7 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .doctor__wrap.open .doctor__content { display: block; }
 
-.doctor__content { padding: 21px 0 42px; display: none; }
+.doctor__content { padding: 0 0 42px; display: none; }
 
 .doctor__content span { display: inline-block; cursor: pointer; position: relative; text-decoration: none; font-weight: bold; color: #f1a80a; font-size: 1rem; font-family: Arial, sans-serif; border-bottom: 0; margin-bottom: 21px; }
 

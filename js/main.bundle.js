@@ -519,7 +519,7 @@ var Popup = function () {
 	}, {
 		key: 'getTop',
 		value: function getTop() {
-			var top = this.$body.scrollTop() + 200;
+			var top = this.$body.scrollTop() + 20;
 			// let top = parseInt(this.$body.outerHeight()) / 2 - this.$popup.outerHeight() / 2;
 			this.$popup.css('top', top + 'px');
 		}
