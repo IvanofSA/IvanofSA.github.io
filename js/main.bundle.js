@@ -36,15 +36,17 @@ $(function () {
         });
     }
 
-    $(window).scroll(function () {
-        var $menu = $('.header');
-
-        if ($(this).scrollTop() > 0) {
-            $menu.removeClass('fixed_top');
-        } else if ($(this).scrollTop() <= 1) {
-            $menu.addClass("fixed_top");
-        }
-    });
+    // $(window).scroll(function () {
+    //     var $menu = $('.header');
+    //
+    //     if ($(this).scrollTop() > 0) {
+    //         $menu.removeClass('fixed_top');
+    //     } else if ($(this).scrollTop() <= 1) {
+    //         $menu.addClass("fixed_top");
+    //
+    //     }
+    //
+    // });
 
     var options = {
         id: 61042406,
