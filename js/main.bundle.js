@@ -21,6 +21,16 @@ $(function () {
             nextArrow: '<div class="slick-arrow slick-next"></div>'
         });
     }
+
+    $('.controls__tabs-link').on('click', function (e) {
+        e.preventDefault();
+
+        var item = $(this).closest('.controls__tabs-item'),
+            contentItem = $('.tabs__item'),
+            itemPosition = item.data('class');
+        contentItem.filter('.tabs__item_' + itemPosition).add(item).addClass('active').siblings().removeClass('active');
+    });
+
     if ($('.js-slider_vert').length) {
 
         $('.js-slider_vert').slick({

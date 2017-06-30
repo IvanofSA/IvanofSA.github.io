@@ -144,6 +144,18 @@
 				</ul>
 			</div>
 			<div class="login__right">
+				<!-- ----------------------------------------------------------------->
+				<!-- Блок успешной регистрации-->
+				<!--.login__accepted-->
+				<!--    .login__accepted_title Заявка на регистрацию принята-->
+				<!--    .login__accepted_text После согласования с Вашей клиникой,<br/> на указанный адрес электронной почты <br/> Вам будет выслано письмо со ссылкой <br/> для подтверждения регистрации.-->
+				<!--        -->
+				<!--.login__accepted-->
+				<!--    .login__accepted_title Заявка на регистрацию принята-->
+				<!--    .login__accepted_text После согласования с Вашей клиникой,<br/> на указанный адрес электронной почты <br/> Вам будет выслано письмо со ссылкой <br/> для подтверждения регистрации.-->
+				<!--    a(href="").login__accepted_link Перейти в личный кабинет-->
+				<!-- Блок успешной регистрации-->
+				<!-- ----------------------------------------------------------------->
 				<ul class="login__tabs_list tabs__list">
 					<li class="tabs__item tabs__item_first active">
 						<div class="login__content">
@@ -163,10 +175,34 @@
 							</form>
 						</div>
 					</li>
-					<!--li.tabs__item.tabs__item_second-->
-					<!--    h2 tab2-->
+					<li class="tabs__item tabs__item_second">
+						<div class="reg__content">
+							<form class="popup__form form form_white" id="reg-form" name="reg_form" target="frame_temp" action="" method="post"> <input type="hidden" name="userType" value="d"> <input type="hidden" name="registration_script" value="http://www.acvm.ru/1/registration.php">
+								<div class="form__box form__box_login-name">
+									<div class="content-row__label">Имя пользователя(Логин)</div> <input class="form__input" type="text" name="userName" placeholder="" autocomplete="off">
+									<div class="form__error-text">Неверно задан логин. Логин должен содержать от 4 до 10 знаков, и должен состоять только из латинских букв и цифр.</div>
+								</div>
+								<div class="form__box form__box_login-pass">
+									<div class="content-row__label">Пароль</div> <input class="form__input" type="password" name="psw1" placeholder="" autocomplete="off">
+									<div class="form__error-text"> Неверно задан пароль. Пароль должен содержать от 6 до 20 знаков, и должен состоять только из латинских букв, цифр и знаков _.,!@#$%^*()=</div>
+								</div>
+								<div class="form__box form__box_login-pass">
+									<div class="content-row__label">Повторите Пароль</div> <input class="form__input" type="password" name="psw2" placeholder="" autocomplete="off">
+									<div class="form__error-text"> Пароли не совпадают</div>
+								</div>
+								<div class="form__box form__box_login-email">
+									<div class="content-row__label">Электронная почта</div> <input class="form__input" type="email" name="user_email" placeholder="" autocomplete="off">
+									<div class="form__error-text"> Некорректный адрес электронной почты</div>
+								</div>
+								<!-- Для доктора добавить класс .form__box_attention_doctor или убрать у блока _attention-->
+								<div class="form__box form__box_attention form__box_attention_doctor">
+									<div class="content-row__label">Пожалуйста, обратите внимание!<br/><span>Ваша регистрация будет подтверждена<br/>только после согласования<br/>с Вашей клиникой!</span></div>
+								</div> <button class="form__button form__button_reg btn" type="submit" name="registrationButton">Зарегистрироваться</button> </form>
+						</div>
+					</li>
 				</ul>
 			</div>
+			<div class="login__footer">© 2016 «International Medical Portal»</div>
 		</div>
 		<div class="popup popup_sertificat"><a class="popup__close-button" href=""></a>
 			<!--.popup__header Cthnbabr-->
