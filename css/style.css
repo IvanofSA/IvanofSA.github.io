@@ -168,7 +168,7 @@ option { padding: 10px; outline: 0; border: 0; }
 
 html { width: 100%; height: 100%; font-size: 100.01%; }
 
-body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; min-width: 1170px; }
+body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; min-width: 1170px; overflow: hidden; }
 
 .container:after, .counrty__clinic:after, .introduction:after, .advantages:after, .advantages__list:after, .how_it_works:after, .clinic-block:after, .clinic-block__slider:after, .clinic-block .slider-cli__list:after, .clinic-block .slider-cli__items:after, .clinic-block .slider-cli__item:after, .doctors:after, .doctors__slider:after, .reviews:after, .reviews .slider-rev__list:after, .footer:after, .doctor-info:after, .login:after, .answer:after, .clinics:after, .clinics .counrty:after, .clinics .counrty__clinic_name:after, .price .counrty:after, .doctor .counrty:after, .doctor__content:after { content: ''; display: block; clear: both; }
 
@@ -458,11 +458,11 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 
 .form .content-row__info { display: inline-block; }
 
-.popup { position: absolute; min-width: 200px; min-height: 200px; background-color: #ffffff; top: 120px; z-index: 155; visibility: hidden; opacity: 0; transition: all .4s; padding: 50px 20px 40px; box-shadow: 0px 2px 57px 0px rgba(1, 2, 2, 0.17); box-sizing: border-box; overflow: hidden; }
+.popup { min-width: 200px; min-height: 200px; background-color: #ffffff; top: 120px; z-index: 155; visibility: hidden; opacity: 0; transition: all .4s; padding: 50px 20px 40px; box-shadow: 0px 2px 57px 0px rgba(1, 2, 2, 0.17); box-sizing: border-box; overflow: hidden; position: fixed; overflow: auto; white-space: nowrap; z-index: 152; }
 
 .popup.show { visibility: visible; opacity: 1; }
 
-.popup__back { width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.85); position: fixed; top: 0; left: 0; z-index: 150; visibility: hidden; opacity: 0; transition: all .4s; }
+.popup__back { width: 100%; height: 100%; background-color: rgba(255, 255, 255, 0.85); position: fixed; top: 0; left: 0; z-index: 150; visibility: hidden; opacity: 0; transition: all .4s; display: block; }
 
 .popup__back.show { visibility: visible; opacity: 1; }
 
@@ -475,6 +475,10 @@ body { font-family: Arial, sans-serif; font-size: 15px; box-sizing: border-box; 
 .popup__text { color: #555555; text-align: center; margin: 0 20px 0; }
 
 .popup__success-icon { background: url("../img/icons/Check_icon.svg") no-repeat center; background-size: cover; height: 53px; width: 57px; margin: auto; margin-bottom: 15px; }
+
+.popup_sertificat { width: 450px; }
+
+.popup_sertificat img { width: 100%; height: 100%; display: block; }
 
 .popup_doctor-info { width: 945px; height: 95vh; overflow-y: scroll; padding: 42px 97px; }
 
