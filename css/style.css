@@ -107,22 +107,24 @@ body { font-family: Arial, Helvetica, sans-serif; }
 
 .website { position: relative; height: 100%; width: 100%; }
 
-.wrap { display: flex; position: relative; justify-content: center; align-items: center; min-height: 100vh; }
+.poligon { position: relative; display: block; width: 100vw; height: 100vh; background: #dcf7fc; }
 
-#poligon { position: relative; display: flex; flex-flow: row wrap; margin: auto; width: 300px; height: 300px; text-align: center; }
+.wave-row { position: absolute; bottom: 0; height: 40vh; width: 100%; background: #323232; }
 
-.btn { position: absolute; bottom: -20px; left: 0; right: 0; cursor: pointer; display: block; text-decoration: none; color: #000; border: 1px solid #000; }
+.wave { display: inline-block; background: url("../img/wave.png") center repeat-x; width: 100vw; height: 255px; margin-left: -10px; }
 
-.btn:hover { text-decoration: underline; }
+.knaz { width: 100vw; height: 100vh; background: #000; }
 
-.score { position: absolute; top: -20px; color: #000; }
+#knaz-1 { background: #ccc; }
 
-.cell { box-sizing: border-box; width: 20px; height: 20px; border-radius: 5px; border: 1px solid #000; }
+#knaz-2 { background: #c4d0ff; }
 
-.snake { background: #000; }
+#knaz-3 { background: #d2ffdb; }
 
-.food { background: green; }
+h1 { padding-top: 30px; font-size: 40px; color: #000; text-align: center; }
 
-.snake-error-head { background: red; }
+.head { padding: 30px 0; height: 20vh; width: 100vw; text-align: center; }
+
+.head .link { display: block; color: #000; font-size: 18px; margin-bottom: 20px; }
 
 /*# sourceMappingURL=style.css.map */
