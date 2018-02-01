@@ -1,2 +1,26 @@
-(function r(e,o,t){function n(f,a){if(!o[f]){if(!e[f]){var u=typeof require=="function"&&require;if(!a&&u)return u(f,!0);if(i)return i(f,!0);var s=new Error("Cannot find module '"+f+"'");throw s.code="MODULE_NOT_FOUND",s}var c=o[f]={exports:{}};e[f][0].call(c.exports,function(r){var o=e[f][1][r];return n(o?o:r)},c,c.exports,r,e,o,t)}return o[f].exports}var i=typeof require=="function"&&require;for(var f=0;f<t.length;f++)n(t[f]);return n})({1:[function(r,e,o){"use strict";$(".js-anchor").on("click",function(r){r.preventDefault();var e=$(this).attr("href");var o=$(e).offset().top+5;$("html, body").animate({scrollTop:o},1e3)});console.log($(window.hashName).offset().top);if(window.hashName){$("html, body").animate({scrollTop:$(window.hashName).offset().top},1e3)}},{}]},{},[1]);
-//# sourceMappingURL=main.bundle.js.map
+var file = document.getElementById('img');
+
+file.addEventListener('change', previewFile);
+
+function previewFile() {
+  var file = document.querySelector('input[type=file]').files[0];
+  var reader  = new FileReader();
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  var centerX = canvas.offsetWidth / 2;
+  var centerY = canvas.offsetHeight / 2;
+
+  reader.onloadend = function () {
+    var image = new Image();
+    image.onload = function() {
+      ctx.drawImage(image, 0, 0);
+    };
+    image.src = reader.result;
+
+  };
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+
