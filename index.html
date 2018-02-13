@@ -1,22 +1,35 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="ie8"><![endif]-->
-<!--[if gt IE 8]><html><![endif]-->
+<!--[if IE 8]>
+<html class="ie8"><![endif]-->
+<!--[if gt IE 8]>
+<html><![endif]-->
 <html>
 
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="cropper.js"></script>
-    <link rel="stylesheet" href="cropper.css"></div>
-		<title>HTML Page</title>
-		<script>
-			window.hashName = window.location.hash;
-		</script>
-	</head>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <link rel="stylesheet" href="vendor/cropper.css">
+  <title>HTML Page</title>
+  <script>
+    window.hashName = window.location.hash;
+  </script>
+  <style>
+    .container {
+      max-width: 640px;
+      margin: 20px auto;
+    }
 
-	<body>
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1>Crop on canvas with Cropper</h1>
+  <h3>Image</h3>
 
   <form id="form" action="/shlyapa" method="post">
     <div>
@@ -25,9 +38,16 @@
     </div>
   </form>
 
-  <canvas id="canvas" width="400" height="400"></canvas>
+  <div class="img-container">
+    <img id="image" src="" alt="Picture">
+  </div>
+  <div class="img-container">
+    <canvas id="canvas"></canvas>
+  </div>
+</div>
 
-	</body>
-	<script src="js/main.bundle.js"></script>
+</body>
+<script src="vendor/cropper.js"></script>
+<script src="js/main.bundle.js"></script>
 
 </html>
